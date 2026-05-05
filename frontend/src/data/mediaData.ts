@@ -17,9 +17,12 @@ export const MEDIA_DATA = {
     intro: {
       heading: "About Our News Platform",
       content: [
-        "Covers milestones, innovations, partnerships, and expansion",
-        "Keeps stakeholders informed and engaged",
-        "Reflects company growth and transparency"
+        "Real-time coverage of industrial milestones and heavy engineering breakthroughs across 22 railway zones.",
+        "Strategic announcements regarding Pan-India railway modernization and high-speed metro project wins.",
+        "Transparent reporting on organizational growth, fiscal performance, and systemic scalability metrics.",
+        "In-depth analysis of government policy alignments including PM Gati Shakti and Make in India initiatives.",
+        "Spotlighting technological innovations in AI-driven supply chain management and industrial automation.",
+        "Daily briefings on global industrial trends and their direct implications for the Indian infrastructure sector."
       ],
       image: "/images/finance_hero.png"
     },
@@ -71,7 +74,10 @@ export const MEDIA_DATA = {
     ],
     testimonials: [
       { quote: "Jigisha Group's rapid expansion and transparent communication have set a new benchmark in the heavy engineering sector.", author: "Economic Times", role: "Industry Analyst" },
-      { quote: "Their regular updates and comprehensive press kits make tracking their infrastructural impact incredibly efficient.", author: "Infrastructure Today", role: "Editorial Board" }
+      { quote: "Their regular updates and comprehensive press kits make tracking their infrastructural impact incredibly efficient.", author: "Infrastructure Today", role: "Editorial Board" },
+      { quote: "A leader in industrial reporting, providing clarity in the complex landscape of railway logistics.", author: "Financial Express", role: "Logistics Desk" },
+      { quote: "The most reliable source for real-time updates on metro rail infrastructure and procurement wins.", author: "Metro Rail News", role: "Senior Editor" },
+      { quote: "Strategic depth and transparency define their media presence in the heavy engineering vertical.", author: "Business Standard", role: "Market Analyst" }
     ],
     downloads: [
       { title: "Corporate Press Kit 2024", size: "12 MB PDF", link: "#" },
@@ -95,9 +101,12 @@ export const MEDIA_DATA = {
     intro: {
       heading: "Our Editorial Vision",
       content: [
-        "Highlighting technological breakthroughs in Heavy Engineering",
-        "Spotlighting visionary leadership and employee success",
-        "Promoting sustainability and modern infrastructure"
+        "Synthesizing technological breakthroughs in Heavy Engineering with real-world application case studies.",
+        "Spotlighting visionary leadership, employee success stories, and specialized technical expertise.",
+        "Promoting sustainability frameworks and modern infrastructure design principles for long-term viability.",
+        "Quarterly retrospectives on industrial e-commerce trends and B2B marketplace evolution.",
+        "Exclusive whitepapers on predictive maintenance and IoT integration in railway maintenance units.",
+        "Regional spotlights on emerging industrial hubs and their role in the global supply chain."
       ],
       image: "/images/about_overview.png"
     },
@@ -137,7 +146,10 @@ export const MEDIA_DATA = {
     ],
     testimonials: [
       { quote: "Jigisha Insights provides unparalleled depth into the modernization of Indian infrastructure.", author: "Railway Board", role: "Senior Advisor" },
-      { quote: "The go-to publication for understanding the intersection of heavy engineering and digital tech.", author: "Tech in Asia", role: "Supply Chain Editor" }
+      { quote: "The go-to publication for understanding the intersection of heavy engineering and digital tech.", author: "Tech in Asia", role: "Supply Chain Editor" },
+      { quote: "Their technical whitepapers are a staple for engineers planning next-gen depot layouts.", author: "Modern Railways", role: "Technical Director" },
+      { quote: "A masterclass in industrial storytelling, blending policy analysis with engineering excellence.", author: "Mint Lounge", role: "Feature Writer" },
+      { quote: "Consistent, high-quality insights that drive the conversation on Gati Shakti implementation.", author: "Infrastructure Weekly", role: "Lead Columnist" }
     ],
     downloads: [
       { title: "Q3 2024 Edition (Latest)", size: "28 MB PDF", link: "#" },
@@ -159,10 +171,14 @@ export const MEDIA_DATA = {
       image: "/images/about_hero.png"
     },
     intro: {
+      heading: "Comprehensive Industrial Strategy",
       content: [
-        "Covers complete lifecycle (ICBMRO)",
-        "Focus on innovation & national development",
-        "Multi-sector expertise"
+        "End-to-end coverage of the complete infrastructure lifecycle via our proprietary ICBMRO framework.",
+        "Deep focus on innovation-driven manufacturing and national development through high-precision engineering.",
+        "Multi-sector expertise spanning 17 vertical domains with a unified quality control architecture.",
+        "Strategic alignment with Tier-1 OEMs and MSME ecosystems for resilient supply chain orchestration.",
+        "Nationwide operational footprint with 2,000+ service nodes and 220+ regional logistics hubs.",
+        "Digital-first approach to industrial inventory management and transparent procurement workflows."
       ]
     },
     sections: [
@@ -294,10 +310,14 @@ export const MEDIA_DATA = {
       image: "/images/rail_maintenance.png"
     },
     intro: {
+      heading: "Technical Inventory Index",
       content: [
-        "Detailed technical specifications",
-        "Compliance & ISO standards verified",
-        "Direct RFQ integration"
+        "Highly detailed technical specifications with dimensional drawings and material grade certifications.",
+        "Full compliance with ISO standards and sector-specific quality protocols (RDSO, BIS, CE).",
+        "Direct RFQ integration for instant commercial engagement and procurement lead-time estimation.",
+        "Interactive cross-referencing for OEM part numbers and standardized industrial equivalents.",
+        "Regularly updated maintenance guides and application manuals for high-precision components.",
+        "Downloadable technical sheets and compliance certificates for audit-ready project documentation."
       ]
     },
     sections: [

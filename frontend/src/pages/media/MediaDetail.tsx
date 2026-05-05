@@ -1,8 +1,16 @@
 import { useParams, Navigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MEDIA_DATA } from "../../data/mediaData";
 import { PageShell } from "../../components/site/PageShell";
 import { AnimatedStat } from "../../components/ui/AnimatedStat";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import {
   ArrowRight, CheckCircle2, BarChart3,
   Rss, Layers, Globe, Zap, ChevronRight, TrendingUp,
@@ -197,41 +205,98 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
 ═══════════════════════════════════════════════════════════════ */
 function IntroSection({ data }: any) {
   return (
-    <section id="overview" className="py-24 lg:py-32 bg-white border-b border-gray-100">
-      <div className="container mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="relative overflow-hidden rounded-2xl aspect-[4/3] border border-gray-100">
-            <img
-              src={data.intro.image}
-              alt=""
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 hover:scale-105"
-            />
-          </div>
-          <div>
-            <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-4">01 — Overview</div>
-            <h2 className="font-serif text-4xl lg:text-5xl text-gray-900 leading-tight mb-10">
-              {data.intro.heading.split(" ").map((w: string, i: number) =>
-                i % 3 === 2
-                  ? <span key={i} className="italic text-gray-400">{w} </span>
-                  : w + " "
-              )}
-            </h2>
-            <div className="space-y-6">
-              {data.intro.content.map((point: string, i: number) => (
-                <div
-                  key={i}
-                  className="flex gap-5 pb-6 border-b border-gray-100 last:border-0 group"
-                >
-                  <div className="h-8 w-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 transition-colors">
-                    <span className="text-xs font-mono font-bold text-blue-600 group-hover:text-white transition-colors">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+    <section id="overview" className="relative py-32 lg:py-48 bg-white overflow-hidden">
+      {/* Background Technical Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, #1a56db 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      <div className="container mx-auto px-8 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          {/* LEFT: Cinematic Visuals & Stats */}
+          <div className="lg:col-span-6 space-y-12">
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-gray-100 shadow-2xl group">
+                <img
+                  src={data.intro.image}
+                  alt=""
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-transparent to-transparent opacity-60" />
+                
+                {/* Floating HUD Element */}
+                <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-xl max-w-[240px] animate-float">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                    <span className="mono text-[10px] font-bold tracking-widest text-gray-900 uppercase">System_Active</span>
                   </div>
-                  <p className="text-gray-500 leading-relaxed text-base group-hover:text-gray-800 transition-colors">
-                    {point}
-                  </p>
+                  <div className="text-sm font-medium text-gray-600 leading-relaxed italic">
+                    "Synthesizing high-frequency industrial data points into actionable editorial intelligence."
+                  </div>
+                </div>
+              </div>
+
+              {/* Overlapping Stats Card */}
+              <div className="absolute -bottom-10 -right-10 hidden lg:block w-72 bg-gray-950 text-white p-8 rounded-3xl shadow-2xl border border-white/10">
+                <div className="mono text-[9px] tracking-[0.3em] text-blue-400 uppercase mb-6">Network // Reach</div>
+                <div className="space-y-6">
+                  {data.stats?.slice(0, 2).map((s: any) => (
+                    <div key={s.label}>
+                      <div className="text-3xl font-display text-white mb-1">{s.value}</div>
+                      <div className="text-[10px] font-bold tracking-widest uppercase text-white/30">{s.label}</div>
+                      <div className="mt-3 h-px w-full bg-white/5" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: High-Impact Typography & Points */}
+          <div className="lg:col-span-6 pt-10 lg:pt-0">
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full mb-8">
+              <span className="w-1 h-1 rounded-full bg-blue-600" />
+              <span className="mono text-[10px] font-bold tracking-[0.2em] uppercase text-blue-700">01 — Architecture</span>
+            </div>
+
+            <h2 className="font-display text-5xl lg:text-7xl text-gray-900 leading-[0.9] tracking-tighter mb-12">
+              The {data.intro.heading.split(" ").slice(-2).join(" ")} <br />
+              <span className="italic text-gray-300">Framework.</span>
+            </h2>
+
+            <div className="grid gap-12">
+              {data.intro.content.map((point: string, i: number) => (
+                <div key={i} className="group relative">
+                  <div className="flex gap-8">
+                    <div className="relative shrink-0">
+                      <div className="mono text-5xl font-black text-gray-50 group-hover:text-blue-50 transition-colors leading-none">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="absolute top-0 left-0 w-8 h-8 flex items-center justify-center">
+                         <div className="w-1 h-1 rounded-full bg-blue-600 group-hover:scale-[3] transition-transform" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xl text-gray-600 leading-relaxed font-light group-hover:text-gray-900 transition-colors">
+                        {point}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom Row Stats (Mobile/Fallback) */}
+            <div className="lg:hidden grid grid-cols-2 gap-6 mt-16 pt-10 border-t border-gray-100">
+               {data.stats?.map((s: any) => (
+                  <div key={s.label}>
+                    <div className="text-2xl font-display text-gray-900 mb-1">{s.value}</div>
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-blue-600">{s.label}</div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -405,43 +470,78 @@ function InsightPanel({ data }: any) {
   const points = data.intro?.content ?? [];
   if (!points.length) return null;
   return (
-    <section className="py-24 lg:py-32 bg-gray-50 border-b border-gray-100">
+    <section className="py-24 lg:py-48 bg-gray-950 text-white overflow-hidden border-b border-white/5">
       <div className="container mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-          {/* content */}
-          <div className="bg-white order-2 lg:order-1">
-            <div className="px-10 py-8 border-b border-gray-100">
-              <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-3">What Matters</div>
-              <h2 className="font-serif text-3xl text-gray-900">Key Takeaways</h2>
-            </div>
-            {points.slice(0, 4).map((p: string, i: number) => (
-              <div
-                key={i}
-                className="px-10 py-6 border-b last:border-0 border-gray-50 flex gap-5 items-start group hover:bg-blue-50/20 transition-colors"
-              >
-                <span className="font-mono text-2xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors shrink-0">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-800 transition-colors">
-                  {p}
-                </p>
+        <div className="grid lg:grid-cols-12 gap-20 items-stretch">
+          
+          {/* Content side: Technical Feed */}
+          <div className="lg:col-span-7">
+            <div className="mb-16">
+              <div className="mono text-[10px] font-bold tracking-[0.4em] text-blue-500 mb-6 flex items-center gap-4">
+                <span className="h-px w-8 bg-blue-500" />
+                DATA_EXTRACTION // {data.layout?.toUpperCase() || "GRID"}_v4.0
               </div>
-            ))}
+              <h2 className="font-display text-5xl lg:text-7xl leading-tight tracking-tighter">
+                Key Strategic <br />
+                <span className="italic text-gray-500">Takeaways.</span>
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-px bg-white/5 border border-white/10">
+              {points.slice(0, 6).map((p: string, i: number) => (
+                <div
+                  key={i}
+                  className="bg-gray-950 p-8 group hover:bg-blue-600 transition-all duration-500 relative overflow-hidden"
+                >
+                  <div className="mono text-[9px] text-white/20 group-hover:text-white/40 mb-6 tracking-widest uppercase">Node_0{i+1}</div>
+                  <p className="text-lg text-gray-400 group-hover:text-white leading-relaxed font-light mb-8 transition-colors">
+                    {p}
+                  </p>
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-white group-hover:w-full transition-all duration-700" />
+                  <ArrowRight className="absolute top-8 right-8 h-4 w-4 text-white/10 group-hover:text-white transition-all group-hover:translate-x-1" />
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* image */}
-          <div className="relative min-h-[400px] order-1 lg:order-2">
-            <img
-              src={data.intro?.image ?? data.hero.image}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="absolute inset-0 bg-gray-900/30" />
-            <div className="absolute bottom-8 left-8 bg-white rounded-xl p-5 shadow-lg">
-              <div className="text-xs text-gray-400 mb-1">Primary Insight</div>
-              <div className="font-serif text-2xl text-gray-900">Deep Dive</div>
+          {/* Visual side: Large Cinematic Monitor */}
+          <div className="lg:col-span-5 relative">
+            <div className="sticky top-32">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 group">
+                <img
+                  src={data.intro?.image ?? data.hero.image}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent" />
+                
+                {/* HUD Overlays */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-between pointer-events-none">
+                  <div className="flex justify-between items-start">
+                    <div className="mono text-[8px] text-blue-500/60 uppercase tracking-widest">Feed_Source :: Industrial_Live</div>
+                    <div className="mono text-[8px] text-white/20 uppercase tracking-widest italic">Encrypted_Channel</div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="inline-block px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 rounded-lg">
+                      <div className="mono text-[9px] text-blue-400 uppercase mb-1">Primary Insight</div>
+                      <div className="font-display text-2xl text-white">Deep Intelligence</div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                       <div className="h-1 w-24 bg-white/10 overflow-hidden">
+                          <div className="h-full bg-blue-500 animate-[loading_3s_infinite]" />
+                       </div>
+                       <div className="mono text-[8px] text-white/30 uppercase">Syncing...</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scanline Effect */}
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] z-20 opacity-20" />
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -452,6 +552,18 @@ function InsightPanel({ data }: any) {
    TESTIMONIALS
 ═══════════════════════════════════════════════════════════════ */
 function Testimonials({ data }: any) {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) return;
+
+    const intervalId = setInterval(() => {
+      api.scrollNext();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [api]);
+
   return (
     <section className="py-24 bg-white border-b border-gray-100">
       <div className="container mx-auto px-8 lg:px-12">
@@ -461,28 +573,41 @@ function Testimonials({ data }: any) {
             Trusted by the <span className="italic text-gray-400">Sector</span>
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-5">
-          {data.testimonials.map((t: any, i: number) => (
-            <div
-              key={i}
-              className="bg-gray-50 rounded-2xl p-10 border border-gray-100 hover:border-blue-100 hover:shadow-md transition-all group"
-            >
-              <div className="font-serif text-4xl text-blue-200 mb-4 leading-none">"</div>
-              <p className="font-serif text-xl text-gray-700 italic leading-relaxed mb-8">
-                {t.quote}
-              </p>
-              <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600 text-sm">
-                  {t.author.charAt(0)}
+
+        <Carousel
+          setApi={setApi}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-5">
+            {data.testimonials.map((t: any, i: number) => (
+              <CarouselItem key={i} className="pl-5 md:basis-1/2">
+                <div className="bg-gray-50 rounded-2xl p-10 border border-gray-100 h-full hover:border-blue-100 hover:shadow-md transition-all group">
+                  <div className="font-serif text-4xl text-blue-200 mb-4 leading-none">"</div>
+                  <p className="font-serif text-xl text-gray-700 italic leading-relaxed mb-8">
+                    {t.quote}
+                  </p>
+                  <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600 text-sm">
+                      {t.author.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm">{t.author}</div>
+                      <div className="text-xs text-gray-400">{t.role}</div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm">{t.author}</div>
-                  <div className="text-xs text-gray-400">{t.role}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center gap-4 mt-10">
+            <CarouselPrevious className="static translate-y-0" />
+            <CarouselNext className="static translate-y-0" />
+          </div>
+        </Carousel>
       </div>
     </section>
   );
