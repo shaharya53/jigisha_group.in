@@ -212,13 +212,6 @@ export function Header() {
                 onMouseLeave={closeServices}
               >
                 <div className="bg-[#1c2c3e] text-white border border-[#2a3f54] shadow-2xl min-w-[220px]">
-                  <Link
-                     to="/services"
-                     onClick={() => setServicesOpen(false)}
-                     className="flex items-center px-5 py-3.5 text-[14px] font-semibold border-b border-[#2a3f54] hover:bg-[#162333] hover:text-[#00aeef] transition-colors"
-                  >
-                     All Services Overview
-                  </Link>
                   {SERVICES_NAV.map((item) => (
                     <Link
                       key={item.to}
@@ -422,14 +415,6 @@ export function Header() {
 
               {mobileServicesOpen && (
                 <div className="pb-3 pl-4 space-y-0 bg-secondary/30">
-                  <Link
-                    to="/services"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-2 py-2 pl-2 text-base font-medium border-b border-border/30 hover:text-accent transition-colors"
-                  >
-                    <ChevronRight className="h-3.5 w-3.5 text-accent" />
-                    All Services Overview
-                  </Link>
                   {SERVICES_NAV.map((item) => (
                     <Link
                       key={item.to}

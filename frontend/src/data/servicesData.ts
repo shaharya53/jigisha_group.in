@@ -40,7 +40,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         "Works on track machines, tower wagons, SPART",
         "Includes S&T systems, OHE, and station infrastructure"
       ],
-      image: "/images/about_hero.png" // Placeholder
+      image: "/images/train.png"
     },
     domains: [
       {
@@ -153,7 +153,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         "Expertise in Automated Fare Collection (AFC)",
         "End-to-end station facilities and platform screen doors"
       ],
-      image: "/images/about_vision.png"
+      image: "/images/metro.png"
     },
     domains: [
       {
@@ -264,7 +264,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         "Financial auditing and project cost control",
         "Legal compliance and risk management"
       ],
-      image: "/images/about_overview.png"
+      image: "/images/commersiacl.png"
     },
     domains: [
       {
@@ -374,7 +374,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         "Heavy metal fabrication and machining",
         "Industrial IoT and preventive maintenance"
       ],
-      image: "/images/about_leadership.png"
+      image: "/images/industrial.png"
     },
     domains: [
       {

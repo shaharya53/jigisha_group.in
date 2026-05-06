@@ -10,7 +10,6 @@ import {
   Package, AlertTriangle, LifeBuoy, Target
 } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "../../components/ui/carousel";
-import { AnimatedStat } from "../../components/ui/AnimatedStat";
 import { CTASection } from "../../components/site/CTASection";
 
 export default function ServiceDetail() {
@@ -79,27 +78,26 @@ function ServiceHero({ data, slug }: { data: any; slug: string }) {
         <img 
           src={data.hero.image} 
           alt="" 
-          className="w-full h-full object-cover opacity-40 transition-transform duration-[10s] hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/70 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,transparent_0%,rgba(5,5,5,0.8)_100%)]" />
+        <div className="absolute inset-0 bg-black/30" /> {/* Subtle overlay for text readability */}
       </div>
 
-      <div className="container mx-auto px-6 lg:px-10 relative z-10 py-12 lg:py-20">
+      <div className="container mx-auto px-6 lg:px-10 relative z-10 py-12 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Left: Heading & Branding */}
-          <div className="lg:col-span-7">
+          {/* Left: Heading & Branding - Full Width */}
+          <div className="lg:col-span-12">
             <div className="flex items-center gap-4 mb-8">
                <div className="h-7 w-7 rounded-lg flex items-center justify-center text-white shadow-lg" style={{ background: accent }}>
                   {icons[slug]}
                </div>
-               <span className="text-[11px] font-black tracking-[0.4em] uppercase text-white/40">
+               <span className="text-[11px] font-black tracking-[0.4em] uppercase text-white/80">
                   {slug} // mission_link_v3
                </span>
             </div>
 
-            <h1 className="font-display leading-[0.9] tracking-tighter text-white mb-8" style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5.5rem)' }}>
+            <h1 className="font-display leading-[0.9] tracking-tighter text-white mb-8 max-w-4xl" style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5.5rem)' }}>
               {titleA}
               {titleB && (
                 <>
@@ -109,58 +107,24 @@ function ServiceHero({ data, slug }: { data: any; slug: string }) {
               )}
             </h1>
 
-            <p className="text-lg text-white/50 leading-relaxed font-light mb-10 max-w-xl italic">
+            <p className="text-lg text-white/90 leading-relaxed font-light mb-10 max-w-3xl italic">
               {data.hero.subheading}
             </p>
 
             <div className="flex flex-wrap gap-5">
               <Link
-                to="/contact"
+                to="/get-quote"
                 className="group inline-flex items-center gap-3 px-8 py-4 text-black font-bold text-sm rounded-xl transition-all hover:opacity-90 active:scale-95 shadow-xl"
                 style={{ background: accent }}
               >
                 Initialize Protocol <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/contact"
+                to="/get-quote"
                 className="inline-flex items-center gap-3 px-8 py-4 font-bold text-sm rounded-xl border border-white/10 text-white transition-all hover:bg-white/5"
               >
                 Get Specifications
               </Link>
-            </div>
-          </div>
-
-          {/* Right: Technical Readout Console */}
-          <div className="lg:col-span-5">
-            <div className="bg-white/[0.03] backdrop-blur-xl rounded-3xl p-8 border border-white/10 relative overflow-hidden group">
-               <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/5">
-                     <div className="flex items-center gap-3">
-                        <Activity className="h-5 w-5" style={{ color: accent }} />
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-white/30">Sector Highlights</span>
-                     </div>
-                     <div className="flex items-center gap-1.5 px-2 py-1 bg-white/5 rounded-full border border-white/5">
-                        <div className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
-                        <span className="text-[9px] font-bold text-white/60 uppercase">Operational</span>
-                     </div>
-                  </div>
-
-                  <div className="space-y-5">
-                    {data.hero.extraPoints.map((point: string, idx: number) => (
-                      <div key={idx} className="flex items-start gap-4">
-                        <div className="h-5 w-5 rounded bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
-                          <CheckCircle2 className="h-3 w-3" style={{ color: accent }} />
-                        </div>
-                        <span className="text-sm text-white/40 leading-relaxed italic">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-               </div>
-               
-               {/* Kinetic HUD Ornament */}
-               <div className="absolute -bottom-10 -right-10 h-32 w-32 border border-white/5 rounded-full animate-[spin_25s_linear_infinite]" />
-               {/* Subtle HUD Scan Line */}
-               <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_bottom,transparent_0%,rgba(255,255,255,0.02)_50%,transparent_100%)] bg-[length:100%_200%] animate-[scan_4s_linear_infinite]" />
             </div>
           </div>
 
@@ -474,25 +438,6 @@ function RailwayExtras() {
           </div>
         </div>
       </section>
-
-      {/* Stats Strip */}
-      <section className="bg-blue-600 py-12">
-        <div className="container mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: "16+", label: "Railway Zones Served" },
-              { value: "200+", label: "Active Contracts" },
-              { value: "₹500Cr+", label: "Project Value Delivered" },
-              { value: "99.2%", label: "On-Time SLA Rate" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center text-white">
-                <AnimatedStat value={stat.value} className="font-serif text-4xl font-bold mb-1 block" />
-                <div className="text-xs text-blue-200 uppercase tracking-widest">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
@@ -577,24 +522,6 @@ function MetroExtras() {
                   </div>
                   <p className="text-sm text-gray-500 leading-relaxed">{t.benefit}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-blue-600 py-12">
-        <div className="container mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: "6", label: "Cities Active" },
-              { value: "340+", label: "Stations Served" },
-              { value: "1.2M+", label: "Daily Commuters Impacted" },
-              { value: "98.8%", label: "Uptime SLA" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center text-white">
-                <AnimatedStat value={stat.value} className="font-serif text-4xl font-bold mb-1 block" />
-                <div className="text-xs text-blue-200 uppercase tracking-widest">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -725,24 +652,6 @@ function CommercialExtras() {
         </div>
       </section>
 
-      <section className="bg-blue-600 py-12">
-        <div className="container mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: "800+", label: "Tenders Executed" },
-              { value: "96%", label: "Compliance Rate" },
-              { value: "₹1200Cr+", label: "Contracts Managed" },
-              { value: "15+", label: "Years in Govt. Procurement" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center text-white">
-                <AnimatedStat value={stat.value} className="font-serif text-4xl font-bold mb-1 block" />
-                <div className="text-xs text-blue-200 uppercase tracking-widest">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-24 lg:py-32 bg-white border-b border-gray-100">
         <div className="container mx-auto px-6 lg:px-10">
           <div className="mb-14">
@@ -851,24 +760,6 @@ function IndustrialExtras() {
                     <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-blue-600 py-12">
-        <div className="container mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: "150+", label: "Plants Commissioned" },
-              { value: "20K+", label: "IoT Sensors Deployed" },
-              { value: "40%", label: "Avg. Downtime Reduction" },
-              { value: "12", label: "Industrial Sectors" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center text-white">
-                <AnimatedStat value={stat.value} className="font-serif text-4xl font-bold mb-1 block" />
-                <div className="text-xs text-blue-200 uppercase tracking-widest">{stat.label}</div>
               </div>
             ))}
           </div>
