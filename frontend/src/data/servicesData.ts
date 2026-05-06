@@ -482,3 +482,6 @@ export const SERVICES_NAV = [
   { to: "/services/commercial", label: "Commercial Services" },
   { to: "/services/industrial", label: "Industrial Services" }
 ];
+
+export const servicesData = Object.values(SERVICES_DATA);
+

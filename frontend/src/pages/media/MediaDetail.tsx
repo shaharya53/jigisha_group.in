@@ -135,58 +135,54 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
             </div>
           </div>
 
-          {/* Right Side: Technical Channel Manifest */}
+          {/* Right Side: Clean Geometric Mosaic */}
           <div className="lg:col-span-5 hidden lg:block">
-            <div className="relative pl-12">
-              {/* Vertical Rule */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-white/0 via-blue-500/20 to-white/0" />
+            <div className="relative h-full flex items-center justify-center">
               
-              <div className="space-y-16">
-                {/* Channel Identity */}
-                <div>
-                   <div className="mono text-[10px] font-bold tracking-[0.4em] text-blue-500 mb-6 flex items-center gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                      IDENTITY_v2.0
-                   </div>
-                   <h3 className="font-display text-4xl text-white leading-tight">
-                      Industrial {slug.toUpperCase()}<br/>
-                      <span className="italic text-gray-500 text-3xl">Stream Protocol</span>
-                   </h3>
+              {/* Background Geometric Accent */}
+              <div className="absolute inset-0 bg-blueprint opacity-[0.03] pointer-events-none" />
+
+              <div className="grid grid-cols-12 gap-4 w-full h-[600px]">
+                
+                {/* 01. Large Vertical Panel (Left) */}
+                <div className="col-span-7 h-full rounded-2xl overflow-hidden border border-white/10 group">
+                   <img 
+                      src={data.hero.image} 
+                      alt="" 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+                   />
+                   {/* Scanline Overlay */}
+                   <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-10" />
                 </div>
 
-                {/* Technical Specs Grid */}
-                <div className="grid grid-cols-2 gap-x-12 gap-y-10">
-                   {[
-                     { label: "Frequency", value: data.stats?.[0]?.label === "Frequency" ? data.stats?.[0]?.value : "Quarterly // Digital First" },
-                     { label: "Circulation", value: "85K+ Active Nodes" },
-                     { label: "Governance", value: "J.B. Editorial Desk" },
-                     { label: "Authentication", value: "ISO 9001 Compliant" }
-                   ].map((spec) => (
-                     <div key={spec.label} className="group">
-                        <div className="text-[10px] font-bold tracking-widest text-white/30 uppercase mb-3 group-hover:text-blue-400 transition-colors">
-                           {spec.label}
-                        </div>
-                        <div className="text-sm font-medium text-gray-400 leading-relaxed">
-                           {spec.value}
-                        </div>
-                        <div className="mt-4 h-px w-8 bg-white/10 group-hover:w-full transition-all duration-500" />
-                     </div>
-                   ))}
+                {/* 02. Top Right Panel */}
+                <div className="col-span-5 flex flex-col gap-4">
+                   <div className="flex-1 rounded-2xl overflow-hidden border border-white/10 group">
+                      <img 
+                         src={data.intro?.image || data.hero.image} 
+                         alt="" 
+                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+                      />
+                      <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                   </div>
+
+                   {/* 03. Bottom Right Panel */}
+                   <div className="h-[40%] rounded-2xl overflow-hidden border border-white/10 group">
+                      <img 
+                         src={data.featuredVideo?.thumbnail || data.hero.image} 
+                         alt="" 
+                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-gray-950/40 to-transparent" />
+                   </div>
                 </div>
 
-                {/* Visual Anchor */}
-                <div className="flex items-center gap-6">
-                   <div className="h-16 w-16 rounded-xl border border-white/10 flex items-center justify-center bg-white/5 hover:border-blue-500/50 transition-colors group">
-                      <HeroIcon className="h-6 w-6 text-white group-hover:text-blue-500 transition-colors" />
-                   </div>
-                   <div className="flex-1">
-                      <div className="h-px w-full bg-white/10 mb-3" />
-                      <div className="mono text-[9px] text-white/20 tracking-widest uppercase">
-                         System Ready // Syncing Global Media Data
-                      </div>
-                   </div>
-                </div>
               </div>
+
+              {/* Decorative Corner Accents (Geometric Only) */}
+              <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white/20" />
+              
             </div>
           </div>
         </div>
@@ -470,78 +466,80 @@ function InsightPanel({ data }: any) {
   const points = data.intro?.content ?? [];
   if (!points.length) return null;
   return (
-    <section className="py-24 lg:py-48 bg-gray-950 text-white overflow-hidden border-b border-white/5">
-      <div className="container mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-12 gap-20 items-stretch">
-          
-          {/* Content side: Technical Feed */}
-          <div className="lg:col-span-7">
-            <div className="mb-16">
-              <div className="mono text-[10px] font-bold tracking-[0.4em] text-blue-500 mb-6 flex items-center gap-4">
-                <span className="h-px w-8 bg-blue-500" />
-                DATA_EXTRACTION // {data.layout?.toUpperCase() || "GRID"}_v4.0
-              </div>
-              <h2 className="font-display text-5xl lg:text-7xl leading-tight tracking-tighter">
-                Key Strategic <br />
-                <span className="italic text-gray-500">Takeaways.</span>
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-px bg-white/5 border border-white/10">
-              {points.slice(0, 6).map((p: string, i: number) => (
-                <div
-                  key={i}
-                  className="bg-gray-950 p-8 group hover:bg-blue-600 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="mono text-[9px] text-white/20 group-hover:text-white/40 mb-6 tracking-widest uppercase">Node_0{i+1}</div>
-                  <p className="text-lg text-gray-400 group-hover:text-white leading-relaxed font-light mb-8 transition-colors">
-                    {p}
-                  </p>
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-white group-hover:w-full transition-all duration-700" />
-                  <ArrowRight className="absolute top-8 right-8 h-4 w-4 text-white/10 group-hover:text-white transition-all group-hover:translate-x-1" />
-                </div>
-              ))}
-            </div>
+    <section className="py-32 lg:py-48 bg-white overflow-hidden relative">
+      {/* Background Subtle Texture */}
+      <div className="absolute inset-0 bg-dots opacity-[0.05] pointer-events-none" />
+      
+      <div className="container mx-auto px-8 lg:px-12 relative z-10">
+        <div className="mb-20 max-w-3xl">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-px w-12 bg-blue-600" />
+            <span className="mono text-[10px] font-bold tracking-[0.4em] text-blue-600 uppercase">
+               Strategic_Intelligence // v4.2
+            </span>
           </div>
+          <h2 className="font-display text-6xl lg:text-8xl leading-[0.85] tracking-tighter text-gray-900 mb-10">
+            Key Strategic <br />
+            <span className="italic text-gray-300">Takeaways.</span>
+          </h2>
+          <p className="text-gray-500 text-xl font-light leading-relaxed border-l-2 border-blue-600/20 pl-8">
+             Distilling high-frequency industrial dispatches into foundational strategic pillars for the sector's next evolutionary phase.
+          </p>
+        </div>
 
-          {/* Visual side: Large Cinematic Monitor */}
-          <div className="lg:col-span-5 relative">
-            <div className="sticky top-32">
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 group">
-                <img
-                  src={data.intro?.image ?? data.hero.image}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent" />
-                
-                {/* HUD Overlays */}
-                <div className="absolute inset-0 p-10 flex flex-col justify-between pointer-events-none">
-                  <div className="flex justify-between items-start">
-                    <div className="mono text-[8px] text-blue-500/60 uppercase tracking-widest">Feed_Source :: Industrial_Live</div>
-                    <div className="mono text-[8px] text-white/20 uppercase tracking-widest italic">Encrypted_Channel</div>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="inline-block px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 rounded-lg">
-                      <div className="mono text-[9px] text-blue-400 uppercase mb-1">Primary Insight</div>
-                      <div className="font-display text-2xl text-white">Deep Intelligence</div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                       <div className="h-1 w-24 bg-white/10 overflow-hidden">
-                          <div className="h-full bg-blue-500 animate-[loading_3s_infinite]" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {points.slice(0, 6).map((p: string, i: number) => {
+             // Rotate through available images in data
+             const images = [data.hero.image, data.intro.image, data.featuredVideo?.thumbnail || data.hero.image];
+             const img = images[i % images.length];
+             
+             return (
+               <div
+                 key={i}
+                 className="group relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
+               >
+                 {/* Cinematic Image Background */}
+                 <img
+                   src={img}
+                   alt=""
+                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                 />
+                 
+                 {/* Sophisticated Overlays */}
+                 <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                 
+                 {/* Content Layer */}
+                 <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
+                    <div className="flex justify-between items-start">
+                       <div className="mono text-[10px] text-white/40 tracking-[0.3em] uppercase">Node_0{i+1}</div>
+                       <div className="h-10 w-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                          <ArrowRight className="h-4 w-4 text-white" />
                        </div>
-                       <div className="mono text-[8px] text-white/30 uppercase">Syncing...</div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Scanline Effect */}
-                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] z-20 opacity-20" />
-              </div>
-            </div>
-          </div>
+                    <div className="space-y-6">
+                       <div className="h-px w-12 bg-blue-500 group-hover:w-full transition-all duration-700" />
+                       <h3 className="font-display text-2xl lg:text-3xl text-white leading-tight tracking-tight">
+                          {p}
+                       </h3>
+                    </div>
+                 </div>
 
+                 {/* Technical Scanline (Subtle) */}
+                 <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:100%_8px] z-10 opacity-20" />
+               </div>
+             );
+          })}
+        </div>
+
+        {/* Bottom Decorative Edge */}
+        <div className="mt-32 flex items-center justify-between border-t border-gray-100 pt-12">
+           <div className="mono text-[9px] text-gray-300 tracking-[0.5em] uppercase">End_Of_Dispatch</div>
+           <div className="flex gap-1">
+              {[1, 2, 3, 4, 5].map(dot => (
+                <div key={dot} className="w-1 h-1 bg-blue-600/20 rounded-full" />
+              ))}
+           </div>
         </div>
       </div>
     </section>

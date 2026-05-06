@@ -3,9 +3,10 @@ import { useEffect, useState, useRef } from "react";
 interface AnimatedStatProps {
   value: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function AnimatedStat({ value, className = "" }: AnimatedStatProps) {
+export function AnimatedStat({ value, className = "", style }: AnimatedStatProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -67,7 +68,7 @@ export function AnimatedStat({ value, className = "" }: AnimatedStatProps) {
   }, [hasAnimated, targetValue, shouldAnimate]);
 
   if (!shouldAnimate) {
-    return <span className={className}>{value}</span>;
+    return <span className={className} style={style}>{value}</span>;
   }
 
   // Format the display number
@@ -76,7 +77,7 @@ export function AnimatedStat({ value, className = "" }: AnimatedStatProps) {
     : "0";
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} style={style}>
       {prefix}{displayNum}{suffix}
     </span>
   );

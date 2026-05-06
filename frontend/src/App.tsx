@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/services/ServiceDetail";
 import Contact from "./pages/Contact";
+import GetQuote from "./pages/GetQuote";
 import Finance from "./pages/Finance";
 import International from "./pages/International";
 import Career from "./pages/Career";
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/media/:slug" element={<MediaDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/get-quote" element={<GetQuote />} />
         <Route path="/finance" element={<Finance />} />
         <Route path="/career" element={<Career />} />
         <Route path="/media" element={<Media />} />

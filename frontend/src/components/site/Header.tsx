@@ -307,10 +307,10 @@ export function Header() {
         </nav>
 
         <Link
-          to="/contact"
+          to="/get-quote"
           className="hidden xl:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-[12px] mono tracking-widest uppercase hover:bg-accent transition-colors"
         >
-          Get In Touch <span aria-hidden>→</span>
+          Get a Quote <span aria-hidden>→</span>
         </Link>
 
         {/* Mobile hamburger */}
