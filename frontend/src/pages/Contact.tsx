@@ -186,7 +186,7 @@ export default function Contact() {
         </div>
 
         {/* ── HERO ── */}
-        <section style={{ position: "relative", minHeight: "90vh", display: "flex", alignItems: "center", overflow: "hidden", background: BG_DARK }} className="pt-32 pb-24 md:pt-40 md:pb-40 lg:pt-48 lg:pb-48">
+        <section style={{ position: "relative", minHeight: "80vh", lgMinHeight: "90vh", display: "flex", alignItems: "center", overflow: "hidden", background: BG_DARK }} className="pt-32 pb-24 lg:pt-0 lg:pb-0">
           {/* BG */}
           <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
             <img src="/images/about_hero.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.3, filter: "grayscale(1)" }} />
@@ -196,25 +196,27 @@ export default function Contact() {
 
           <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 1.5rem", width: "100%", position: "relative", zIndex: 10 }}>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-4xl md:text-6xl lg:text-8xl" style={{ fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.05em", color: "white", textTransform: "uppercase", marginBottom: "2rem" }}>
+              <h1 className="text-5xl md:text-6xl lg:text-8xl text-center lg:text-left" style={{ fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.05em", color: "white", textTransform: "uppercase", marginBottom: "2rem" }}>
                 Let's Build<br />Something<br />
                 <span style={{ background: "linear-gradient(to right, #3b82f6, #93c5fd)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   Great Together.
                 </span>
               </h1>
-              <p className="text-lg md:text-xl" style={{ fontWeight: 500, color: TEXT_MUTED, maxWidth: 500, marginBottom: "3rem", lineHeight: 1.6 }}>
+              <p className="text-lg md:text-xl text-center lg:text-left mx-auto lg:ml-0" style={{ fontWeight: 500, color: TEXT_MUTED, maxWidth: 500, marginBottom: "3rem", lineHeight: 1.6 }}>
                 Whether you're looking to scale your industrial operations or inquire about our procurement network — our team is here to help.
               </p>
-              <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                <a href="mailto:info@jigisha.in"
-                  style={{ padding: "1rem 2rem", background: PRIMARY, color: "white", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.75rem", borderRadius: "1rem", display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none", boxShadow: "0 10px 20px -10px rgba(37,99,235,0.5)", transition: "all 0.3s" }}>
-                  <Mail size={16} /> Email Us Directly
-                </a>
-                <a href="tel:+919824724364"
-                  style={{ padding: "1rem 2rem", background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}`, color: "white", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.75rem", borderRadius: "1rem", display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none", transition: "all 0.3s" }}>
-                  <Phone size={16} /> Call Now
-                </a>
-              </div>
+                <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center", lgJustifyContent: "flex-start" }}>
+                  <a href="mailto:info@jigisha.in"
+                    className="w-full sm:w-auto justify-center"
+                    style={{ padding: "1.125rem 2rem", background: PRIMARY, color: "white", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.75rem", borderRadius: "1rem", display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none", boxShadow: "0 10px 20px -10px rgba(37,99,235,0.5)", transition: "all 0.3s" }}>
+                    <Mail size={16} /> Email Us Directly
+                  </a>
+                  <a href="tel:+919824724364"
+                    className="w-full sm:w-auto justify-center"
+                    style={{ padding: "1.125rem 2rem", background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}`, color: "white", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.75rem", borderRadius: "1rem", display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none", transition: "all 0.3s" }}>
+                    <Phone size={16} /> Call Now
+                  </a>
+                </div>
             </motion.div>
           </div>
 
@@ -439,7 +441,7 @@ export default function Contact() {
 
               {/* RIGHT — Map */}
               <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={mapIn ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.7, delay: 0.1 }}
-                style={{ height: "100%", minHeight: 600 }}>
+                style={{ height: "100%", minHeight: "400px", lgMinHeight: "600px" }}>
                 <Suspense fallback={<div style={{ minHeight: 600, background: "#f1f5f9", borderRadius: "3rem", display: "flex", alignItems: "center", justifyContent: "center", color: "#64748b" }}>Loading map…</div>}>
                   <ContactMap mapIn={mapIn} />
                 </Suspense>

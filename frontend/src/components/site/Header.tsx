@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
 import { IB_NAV } from "@/data/international";
 import { SERVICES_NAV } from "@/data/servicesData";
 import { MEDIA_NAV } from "@/data/mediaData";
@@ -306,20 +306,23 @@ export function Header() {
           Get a Quote <span aria-hidden>→</span>
         </Link>
 
-        {/* Mobile hamburger */}
-        <button
-          aria-label="Menu"
-          className="xl:hidden p-2"
-          onClick={() => setMobileOpen((o) => !o)}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex xl:hidden items-center gap-2">
+          <button
+            aria-label="Menu"
+            className="p-2 text-foreground/80 hover:text-accent transition-colors"
+            onClick={() => setMobileOpen((o) => !o)}
+          >
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Full Screen Cinematic Overlay */}
       {mobileOpen && (
-        <div className="xl:hidden border-t border-border bg-background">
-          <nav className="px-6 py-6 flex flex-col gap-0">
+        <div className="xl:hidden fixed inset-0 top-[64px] z-[100] bg-background/98 backdrop-blur-xl overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
+          <nav className="px-6 py-10 flex flex-col gap-0 min-h-[calc(100vh-64px)]">
+            <div className="mono text-[10px] tracking-[0.4em] uppercase text-accent mb-6">Navigation_Desk</div>
             {NAV_LEFT.map((n) => 
               n.external ? (
                 <a
@@ -328,9 +331,10 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="py-3.5 border-b border-border/60 font-display text-xl"
+                  className="py-4 border-b border-border/60 font-display text-2xl flex items-center justify-between group"
                 >
                   {n.label}
+                  <ChevronRight className="h-5 w-5 text-accent opacity-40 group-hover:opacity-100 transition-all" />
                 </a>
               ) : (
                 <NavLink
@@ -339,10 +343,15 @@ export function Header() {
                   end={n.to === "/"}
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
-                    `py-3.5 border-b border-border/60 font-display text-xl ${isActive ? "text-accent" : ""}`
+                    `py-4 border-b border-border/60 font-display text-2xl flex items-center justify-between group ${isActive ? "text-accent" : ""}`
                   }
                 >
-                  {n.label}
+                  {({ isActive }) => (
+                    <>
+                      {n.label}
+                      <ChevronRight className={`h-5 w-5 transition-all ${isActive ? "text-accent opacity-100" : "text-accent opacity-40 group-hover:opacity-100"}`} />
+                    </>
+                  )}
                 </NavLink>
               )
             )}
@@ -350,11 +359,11 @@ export function Header() {
             {/* International Business accordion */}
             <div className="border-b border-border/60">
               <button
-                className="w-full flex items-center justify-between py-3.5 font-display text-xl text-left"
+                className="w-full flex items-center justify-between py-4 font-display text-2xl text-left"
                 onClick={() => setMobileIBOpen((o) => !o)}
               >
                 International
-                <ChevronDown className={`h-4 w-4 transition-transform ${mobileIBOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`h-5 w-5 transition-transform ${mobileIBOpen ? "rotate-180" : ""}`} />
               </button>
 
               {mobileIBOpen && (
@@ -406,11 +415,11 @@ export function Header() {
             {/* Services accordion */}
             <div className="border-b border-border/60">
               <button
-                className="w-full flex items-center justify-between py-3.5 font-display text-xl text-left"
+                className="w-full flex items-center justify-between py-4 font-display text-2xl text-left"
                 onClick={() => setMobileServicesOpen((o) => !o)}
               >
                 Services
-                <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`h-5 w-5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
               </button>
 
               {mobileServicesOpen && (
@@ -444,11 +453,11 @@ export function Header() {
             {/* Media accordion */}
             <div className="border-b border-border/60">
               <button
-                className="w-full flex items-center justify-between py-3.5 font-display text-xl text-left"
+                className="w-full flex items-center justify-between py-4 font-display text-2xl text-left"
                 onClick={() => setMobileMediaOpen((o) => !o)}
               >
                 Media
-                <ChevronDown className={`h-4 w-4 transition-transform ${mobileMediaOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`h-5 w-5 transition-transform ${mobileMediaOpen ? "rotate-180" : ""}`} />
               </button>
 
               {mobileMediaOpen && (
@@ -476,9 +485,10 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="py-3.5 border-b border-border/60 font-display text-xl"
+                  className="py-4 border-b border-border/60 font-display text-2xl flex items-center justify-between group"
                 >
                   {n.label}
+                  <ChevronRight className="h-5 w-5 text-accent opacity-40 group-hover:opacity-100 transition-all" />
                 </a>
               ) : (
                 <NavLink
@@ -486,13 +496,44 @@ export function Header() {
                   to={n.to}
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
-                    `py-3.5 border-b border-border/60 font-display text-xl ${isActive ? "text-accent" : ""}`
+                    `py-4 border-b border-border/60 font-display text-2xl flex items-center justify-between group ${isActive ? "text-accent" : ""}`
                   }
                 >
-                  {n.label}
+                  {({ isActive }) => (
+                    <>
+                      {n.label}
+                      <ChevronRight className={`h-5 w-5 transition-all ${isActive ? "text-accent opacity-100" : "text-accent opacity-40 group-hover:opacity-100"}`} />
+                    </>
+                  )}
                 </NavLink>
               )
             )}
+
+            {/* Mobile Footer Area */}
+            <div className="mt-auto pt-16 pb-10">
+              <div className="flex flex-col gap-6">
+                <Link
+                  to="/get-quote"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full flex items-center justify-center gap-3 px-8 py-5 bg-primary text-primary-foreground font-display text-xl tracking-wide uppercase hover:bg-accent transition-all"
+                >
+                  Get a Quote <ArrowRight className="h-5 w-5" />
+                </Link>
+                <div className="flex items-center justify-between border-t border-border/60 pt-6">
+                  <div className="flex flex-col gap-1">
+                    <span className="mono text-[10px] tracking-widest text-muted-foreground uppercase">Support_Desk</span>
+                    <a href="mailto:info@jigisha.in" className="text-sm font-semibold text-accent">info@jigisha.in</a>
+                  </div>
+                  <div className="flex flex-col gap-1 text-right">
+                    <span className="mono text-[10px] tracking-widest text-muted-foreground uppercase">Live_Status</span>
+                    <span className="text-sm font-semibold flex items-center justify-end gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      Active
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </nav>
         </div>
       )}

@@ -353,7 +353,7 @@ function ICBMROGlobalPresence() {
       {/* Stat ticker bar */}
       <div className="border-b border-background/10 py-6 relative z-10">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-x divide-background/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-background/10">
             {stats.map((s, i) => (
               <div key={i} className="px-8 first:pl-0 last:pr-0 py-2">
                 <div className="font-display text-4xl lg:text-5xl tracking-tighter text-background">

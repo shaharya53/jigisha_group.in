@@ -32,7 +32,7 @@ export default function Finance() {
   return (
     <PageShell>
       {/* 1. HERO SECTION (Redesigned: Minimalist Industrial Finance) */}
-      <section className="relative h-screen flex items-center bg-white border-b border-border overflow-hidden">
+      <section className="relative min-h-[80vh] lg:h-screen flex items-center bg-white border-b border-border overflow-hidden py-20 lg:py-0">
         {/* Cinematic Background Image */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           <img
@@ -57,22 +57,22 @@ export default function Finance() {
                 </div>
               </h1>
 
-              <div className="max-w-xl border-l-2 border-accent/30 pl-10 mb-16 reveal" style={{ animationDelay: "400ms" }}>
-                <p className="text-xl text-gray-600 leading-relaxed font-light">
+              <div className="max-w-xl border-l-2 border-accent/30 pl-6 lg:pl-10 mb-16 reveal mx-auto lg:ml-0" style={{ animationDelay: "400ms" }}>
+                <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light text-left">
                   {FINANCE_HERO.description.split('. ')[0]}.
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-10 reveal" style={{ animationDelay: "600ms" }}>
-                <button className="bg-gray-900 text-white px-12 py-6 mono text-xs tracking-[0.2em] uppercase hover:bg-accent transition-all duration-300 group flex items-center gap-4 relative overflow-hidden">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-10 reveal" style={{ animationDelay: "600ms" }}>
+                <button className="w-full sm:w-auto bg-gray-900 text-white px-10 lg:px-12 py-5 lg:py-6 mono text-xs tracking-[0.2em] uppercase hover:bg-accent transition-all duration-300 group flex items-center justify-center gap-4 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                   Analyze Needs <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
                 </button>
                 <div className="flex items-center gap-4 group cursor-pointer">
-                  <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-accent transition-colors">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-accent transition-colors">
                     <Zap className="h-4 w-4 text-accent" />
                   </div>
-                  <span className="mono text-[11px] tracking-widest uppercase text-gray-500 group-hover:text-gray-900 transition-colors">Watch Mechanism</span>
+                  <span className="mono text-[10px] lg:text-[11px] tracking-widest uppercase text-gray-500 group-hover:text-gray-900 transition-colors">Watch Mechanism</span>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Finance() {
           </div>
 
           {/* Mobile Grid View */}
-          <div className="grid md:grid-cols-2 lg:hidden gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-6">
             {FINANCE_PRODUCTS.map((product, i) => (
               <div key={i} className="relative flex flex-col p-8 bg-background border border-border group hover:bg-secondary/20 transition-all duration-300">
                 <div className="flex-1">
@@ -276,9 +276,9 @@ export default function Finance() {
       </section>
 
       {/* 4. KEY FEATURES (Redesigned as clean technical list) */}
-      <section className="border-b border-border bg-background py-24 lg:py-36">
+      <section className="border-b border-border bg-background py-20 lg:py-36">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <div className="grid lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
             {FINANCE_FEATURES.map((feature, i) => (
               <div key={i} className="border-l border-border pl-8 relative">
 
@@ -315,17 +315,17 @@ export default function Finance() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-20">
-            {/* Target Users Table */}
+            {/* Target Users List - Responsive Container */}
             <div className="border border-border">
-              <div className="grid grid-cols-12 bg-secondary/50 p-6 border-b border-border mono text-[12px] uppercase tracking-widest text-accent">
+              <div className="hidden sm:grid grid-cols-12 bg-secondary/50 p-6 border-b border-border mono text-[12px] uppercase tracking-widest text-accent">
                 <div className="col-span-5">Category</div>
                 <div className="col-span-7">Support Strategy</div>
               </div>
               <div className="divide-y divide-border bg-background">
                 {TARGET_USERS.map((user, i) => (
-                  <div key={i} className="grid grid-cols-12 p-6 text-sm items-center hover:bg-secondary/10 transition-colors">
-                    <div className="col-span-5 font-display text-lg">{user.category}</div>
-                    <div className="col-span-7 text-muted-foreground leading-relaxed">{user.support}</div>
+                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-12 p-6 text-sm items-start sm:items-center hover:bg-secondary/10 transition-colors gap-4 sm:gap-0">
+                    <div className="w-full sm:col-span-5 font-display text-xl sm:text-lg border-b sm:border-b-0 border-border pb-2 sm:pb-0">{user.category}</div>
+                    <div className="w-full sm:col-span-7 text-muted-foreground leading-relaxed pl-2 sm:pl-0 border-l-2 border-accent sm:border-l-0">{user.support}</div>
                   </div>
                 ))}
               </div>

@@ -32,7 +32,7 @@ export default function Media() {
 /* ── 1. MASTHEAD HERO ─────────────────────────────────────────── */
 function Masthead() {
   return (
-    <section className="bg-primary text-primary-foreground border-b border-border relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+    <section className="bg-primary text-primary-foreground border-b border-border relative overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex flex-col justify-center py-20 lg:py-0">
       {/* Background Layers */}
       <div className="absolute inset-0 bg-blueprint opacity-[0.06] mix-blend-overlay" />
       <div className="absolute inset-0 bg-linear-to-b from-primary via-primary/80 to-primary" />
@@ -56,8 +56,8 @@ function Masthead() {
           <div className="lg:col-span-7">
 
 
-            <h1 className="font-display leading-[0.82] tracking-tighter reveal"
-              style={{ fontSize: "clamp(4rem, 10vw, 11rem)", animationDelay: "300ms" }}>
+            <h1 className="font-display leading-[0.82] tracking-tighter reveal text-center lg:text-left"
+              style={{ fontSize: "clamp(2.5rem, 10vw, 11rem)", animationDelay: "300ms" }}>
               Industrial<br />
               <span className="italic text-accent bg-linear-to-r from-accent to-accent/60 bg-clip-text text-transparent">Universe</span><br />
               Media.
@@ -151,7 +151,7 @@ function Channels() {
           {/* Channel 01 — Featured Tall */}
           <Link
             to={CHANNELS[0].to}
-            className="lg:col-span-6 group relative bg-background p-12 lg:p-20 flex flex-col justify-between min-h-[500px] lg:min-h-[700px] overflow-hidden hover:bg-primary transition-all duration-700"
+            className="lg:col-span-6 group relative bg-background p-10 lg:p-20 flex flex-col justify-between min-h-[400px] lg:min-h-[700px] overflow-hidden hover:bg-primary transition-all duration-700"
           >
             <div className="absolute bottom-0 right-0 font-display text-[220px] leading-none text-foreground/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors translate-y-10 translate-x-10">
               01
@@ -163,7 +163,7 @@ function Channels() {
                 </div>
                 <ArrowRight className="h-6 w-6 text-muted-foreground group-hover:text-accent group-hover:translate-x-2 transition-all duration-500" />
               </div>
-              <h3 className="font-display text-7xl lg:text-9xl leading-none group-hover:text-primary-foreground transition-colors tracking-tighter mb-8">
+              <h3 className="font-display text-6xl lg:text-9xl leading-none group-hover:text-primary-foreground transition-colors tracking-tighter mb-8">
                 {CHANNELS[0].t}
               </h3>
             </div>
@@ -178,18 +178,18 @@ function Channels() {
           </Link>
 
           {/* Right Column Grid */}
-          <div className="lg:col-span-6 grid grid-rows-3 gap-px bg-border">
+          <div className="lg:col-span-6 flex flex-col lg:grid lg:grid-rows-3 gap-px bg-border">
             {CHANNELS.slice(1).map((chan, i) => {
               const Icon = chan.icon;
               return (
                 <Link
                   key={chan.n}
                   to={chan.to}
-                  className="group relative bg-background p-12 flex items-center justify-between overflow-hidden hover:bg-secondary/40 transition-all duration-500"
+                  className="group relative bg-background p-8 lg:p-12 flex items-center justify-between overflow-hidden hover:bg-secondary/40 transition-all duration-500"
                 >
 
-                  <div className="flex-1 flex items-center gap-12">
-                    <div className="font-display text-5xl text-accent/20 group-hover:text-accent transition-colors tabular-nums">
+                  <div className="flex-1 flex items-center gap-6 lg:gap-12">
+                    <div className="font-display text-4xl lg:text-5xl text-accent/20 group-hover:text-accent transition-colors tabular-nums shrink-0">
                       {chan.n}
                     </div>
                     <div>
@@ -220,7 +220,7 @@ function LatestNews() {
   return (
     <section className="py-24 lg:py-40 bg-secondary/10 relative border-t border-border">
       <div className="container mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-end mb-24">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 lg:mb-24 gap-8">
           <div>
             <div className="mono text-[12px] font-bold tracking-[0.4em] uppercase text-accent mb-6">03 // DISPATCHES</div>
             <h2 className="font-display text-5xl lg:text-8xl leading-none tracking-tighter">
@@ -245,7 +245,7 @@ function LatestNews() {
                 <div className="h-px w-20 bg-primary-foreground/20" />
                 <span className="mono text-[11px] text-primary-foreground/40">{NEWS[0].date}</span>
               </div>
-              <h3 className="font-display text-4xl lg:text-6xl leading-tight tracking-tight mb-10 group-hover:text-accent transition-colors">
+              <h3 className="font-display text-3xl lg:text-6xl leading-tight tracking-tight mb-10 group-hover:text-accent transition-colors">
                 {NEWS[0].title}
               </h3>
               <p className="text-primary-foreground/50 text-xl font-light leading-relaxed max-w-2xl mb-12 italic border-l border-accent/40 pl-8">
@@ -270,27 +270,32 @@ function LatestNews() {
             <a
               key={item.title}
               href="#"
-              className="group grid grid-cols-12 gap-8 p-10 items-center hover:bg-secondary/20 transition-all duration-300 relative overflow-hidden"
+              className="group flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-8 p-8 lg:p-10 items-start lg:items-center hover:bg-secondary/20 transition-all duration-300 relative overflow-hidden"
             >
               {/* Hover Accent Rule */}
 
-              <div className="col-span-1 hidden lg:block">
+              <div className="lg:col-span-12 lg:hidden flex items-center justify-between w-full mb-2">
+                <span className="mono text-[11px] tracking-widest text-accent font-bold tabular-nums uppercase">{item.cat}</span>
+                <span className="mono text-[10px] text-muted-foreground/60 tabular-nums uppercase">{item.date}</span>
+              </div>
+
+              <div className="hidden lg:block lg:col-span-1">
                 <span className="font-display text-3xl text-accent/20 group-hover:text-accent transition-colors tabular-nums">
                   {String(i + 2).padStart(2, "0")}
                 </span>
               </div>
 
-              <div className="col-span-12 lg:col-span-2">
+              <div className="hidden lg:block lg:col-span-2">
                 <span className="mono text-[11px] tracking-widest text-muted-foreground/60 tabular-nums uppercase">{item.date}</span>
               </div>
 
-              <div className="col-span-12 lg:col-span-7">
-                <h4 className="font-display text-2xl lg:text-3xl text-foreground group-hover:text-accent transition-colors leading-snug">
+              <div className="w-full lg:col-span-7">
+                <h4 className="font-display text-xl lg:text-3xl text-foreground group-hover:text-accent transition-colors leading-snug">
                   {item.title}
                 </h4>
               </div>
 
-              <div className="col-span-12 lg:col-span-2 lg:text-right">
+              <div className="hidden lg:block lg:col-span-2 lg:text-right">
                 <span className="mono text-[11px] font-bold tracking-[0.2em] uppercase text-accent border border-accent/20 px-3 py-1 group-hover:bg-accent group-hover:text-white transition-all">
                   {item.cat}
                 </span>

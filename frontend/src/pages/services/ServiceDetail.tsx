@@ -94,23 +94,23 @@ function ServiceHero({ data, slug }: { data: any; slug: string }) {
               <span className="font-mono text-[10px] tracking-[0.4em] text-blue-400 uppercase font-bold">Industrial Vertical // 2024</span>
             </div>
 
-            <h1 className="font-display leading-[0.88] tracking-tighter mb-10 reveal" style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)', animationDelay: '300ms' }}>
+            <h1 className="font-display leading-[0.88] tracking-tighter mb-10 reveal text-center lg:text-left" style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)', animationDelay: '300ms' }}>
               <span className="opacity-95">{titleA}</span>
               {titleB && (
                 <>
-                  <br />
-                  <span style={{ color: accent }} className="opacity-90">{titleB}</span>
+                  <br className="hidden lg:block" />
+                  <span style={{ color: accent }} className="opacity-90 lg:block lg:mt-2"> – {titleB}</span>
                 </>
               )}
             </h1>
 
-            <div className="max-w-2xl space-y-12 reveal" style={{ animationDelay: '500ms' }}>
-              <p className="text-2xl text-slate-300 leading-tight font-light italic border-l-2 border-blue-500/50 pl-10">
+            <div className="max-w-2xl space-y-12 reveal mx-auto lg:ml-0" style={{ animationDelay: '500ms' }}>
+              <p className="text-xl lg:text-2xl text-slate-300 leading-tight font-light italic border-l-2 border-blue-500/50 pl-10 text-left">
                 {data.hero.subheading}
               </p>
 
               {/* Technical Parameter Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10 text-center sm:text-left">
                 {data.hero.extraPoints?.slice(0, 3).map((p: string, i: number) => (
                   <div key={i}>
                     <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-2">Technical Spec 0{i+1}</div>
@@ -215,24 +215,14 @@ function CapabilitiesSection({ data, setApi, api, current, count }: any) {
             ))}
           </CarouselContent>
 
-          <div className="flex justify-between items-center mt-10">
-            <div className="flex gap-1.5">
-              {Array.from({ length: count }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  style={{
-                    width: current === index + 1 ? "2.5rem" : "0.5rem",
-                    background: current === index + 1 ? "#1a56db" : "#e5e7eb",
-                  }}
-                />
-              ))}
-            </div>
-            <div className="flex gap-3">
-              <CarouselPrevious className="static translate-y-0 h-11 w-11 rounded-full border-gray-200 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all" />
-              <CarouselNext className="static translate-y-0 h-11 w-11 rounded-full border-gray-200 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all" />
-            </div>
+          {/* Side Buttons for Desktop */}
+          <CarouselPrevious className="hidden lg:flex -left-16 h-12 w-12 border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-600 transition-all" />
+          <CarouselNext className="hidden lg:flex -right-16 h-12 w-12 border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-600 transition-all" />
+
+          {/* Bottom Buttons for Mobile only */}
+          <div className="flex justify-center gap-3 mt-10 lg:hidden">
+            <CarouselPrevious className="static translate-y-0 h-11 w-11 rounded-full border-gray-200 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all" />
+            <CarouselNext className="static translate-y-0 h-11 w-11 rounded-full border-gray-200 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all" />
           </div>
         </Carousel>
       </div>
@@ -268,8 +258,8 @@ function ProductMatrix({ data }: { data: any }) {
 
           <div className="lg:col-span-8">
             <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-              {/* Header */}
-              <div className="grid grid-cols-2 gap-4 bg-gray-900 text-white px-8 py-5">
+              {/* Header - Desktop Only */}
+              <div className="hidden sm:grid grid-cols-2 gap-4 bg-gray-900 text-white px-8 py-5">
                 <div className="text-xs font-bold tracking-widest uppercase text-gray-400">Category</div>
                 <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Integrated Systems</div>
               </div>
@@ -277,7 +267,7 @@ function ProductMatrix({ data }: { data: any }) {
               {data.productCategories.map((cat: any, i: number) => (
                 <div
                   key={i}
-                  className="grid grid-cols-2 gap-4 px-8 py-5 border-b last:border-0 hover:bg-blue-50/30 transition-colors group"
+                  className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4 px-8 py-6 sm:py-5 border-b last:border-0 hover:bg-blue-50/30 transition-colors group"
                   style={{ borderColor: "#f3f4f6" }}
                 >
                   <div className="flex items-center gap-3">
@@ -286,7 +276,7 @@ function ProductMatrix({ data }: { data: any }) {
                       {cat.category}
                     </span>
                   </div>
-                  <div className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors self-center">
+                  <div className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors self-start sm:self-center">
                     {cat.items}
                   </div>
                 </div>
@@ -418,7 +408,7 @@ function RailwayExtras() {
                 Jigisha operates across all major government and industrial procurement frameworks, ensuring compliance, transparency, and competitive pricing on every contract.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {platforms.map((p, i) => (
                 <div
                   key={i}
@@ -432,35 +422,6 @@ function RailwayExtras() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Railway Timeline */}
-      <section className="py-24 lg:py-32 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-6 lg:px-10">
-          <div className="mb-14 text-center">
-            <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-4">History</div>
-            <h2 className="font-serif text-4xl lg:text-5xl text-gray-900">
-              Railway Journey <span className="text-gray-400 italic">Timeline</span>
-            </h2>
-          </div>
-
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-100" />
-            {timeline.map((item, i) => (
-              <div
-                key={i}
-                className={`relative flex items-center gap-8 mb-10 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
-              >
-                <div className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                  <div className="text-xs font-mono font-bold text-blue-600 mb-1">{item.year}</div>
-                  <div className="text-sm text-gray-600 leading-relaxed">{item.event}</div>
-                </div>
-                <div className="absolute left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-blue-600 border-4 border-white shadow-sm z-10" />
-                <div className="flex-1" />
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -579,7 +540,7 @@ function MetroExtras() {
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { icon: <Users className="h-6 w-6 text-blue-600" />, label: "Accessibility", value: "100% RPWD Compliant" },
                 { icon: <Clock className="h-6 w-6 text-blue-600" />, label: "Headway", value: "< 90 seconds" },
@@ -630,7 +591,7 @@ function CommercialExtras() {
               How We <span className="text-gray-400 italic">Deliver</span>
             </h2>
           </div>
-          <div className="grid lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((p, i) => (
               <div key={i} className="relative">
                 {i < process.length - 1 && (
@@ -664,7 +625,7 @@ function CommercialExtras() {
                 Decades of experience navigating India's complex public sector procurement landscape means we get contracts done right — on time and within compliance.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {sectors.map((s, i) => (
                 <div
                   key={i}

@@ -73,17 +73,17 @@ function Hero({ data }: Props) {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
 
           {/* LEFT: Typographic Power */}
-          <div className="lg:col-span-7 pt-12">
-            <div className="flex items-center gap-4 mb-8">
+          <div className="lg:col-span-7 pt-12 text-center lg:text-left">
+            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
               <div className="h-[2px] w-12 bg-accent" />
               <span className="font-mono text-[11px] tracking-[0.5em] uppercase text-accent font-bold">
                 Industrial Digital Ecosystem
               </span>
             </div>
 
-            <h1 className="font-display text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.85] tracking-tighter text-background mb-10">
+            <h1 className="font-display text-[clamp(2.5rem,9vw,7.5rem)] leading-[0.85] tracking-tighter text-background mb-10">
               {data.hero.title.split(" ").slice(0, -2).join(" ")} <br />
-              <span className="italic text-accent relative">
+              <span className="italic text-accent relative inline-block lg:block">
                 {data.hero.title.split(" ").slice(-2).join(" ")}
                 <svg className="absolute -bottom-6 left-0 w-full h-8 text-accent/10 -z-10" viewBox="0 0 400 40">
                   <path d="M0 20 Q100 0 200 20 T400 20" fill="none" stroke="currentColor" strokeWidth="12" />
@@ -91,12 +91,12 @@ function Hero({ data }: Props) {
               </span>
             </h1>
 
-            <div className="flex flex-col md:flex-row md:items-center gap-10 mt-12">
-              <p className="text-background/50 text-lg leading-relaxed font-light max-w-[420px] border-l border-background/20 pl-8">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-10 mt-12">
+              <p className="text-background/50 text-base lg:text-lg leading-relaxed font-light max-w-[420px] border-l lg:border-l border-background/20 pl-8 text-left">
                 {data.hero.subtitle}
               </p>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 items-center lg:items-start">
                 <Link
                   to="/contact"
                   className="group relative inline-flex items-center gap-6 bg-accent text-background font-mono text-[10px] tracking-[0.3em] uppercase px-10 py-6 overflow-hidden transition-all"
@@ -114,7 +114,7 @@ function Hero({ data }: Props) {
           </div>
 
           {/* RIGHT: Bento Monitor Grid */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4 h-[600px] relative">
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4 h-[400px] lg:h-[600px] relative">
             {/* Main Monitor */}
             <div className="col-span-2 row-span-1 bg-secondary/10 border border-background/10 relative overflow-hidden group cursor-crosshair">
               <img src="/images/rail_smart.png" alt="" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" />
@@ -203,8 +203,8 @@ function StatsBanner({ data }: Props) {
 function PlatformOverview({ data }: Props) {
   return (
     <section className="border-b border-border bg-secondary/5">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-36">
-        <div className="grid lg:grid-cols-12 gap-20 items-center">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-36">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-8">
@@ -300,7 +300,7 @@ function CoreFeatures({ data }: Props) {
             return (
               <div key={cat.category} className="group">
                 {/* Header row */}
-                <div className="grid lg:grid-cols-12 gap-6 py-8 items-center hover:bg-secondary/20 transition-colors px-2 -mx-2">
+                <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-6 py-8 items-start lg:items-center hover:bg-secondary/20 transition-colors px-2 -mx-2">
                   <div className="lg:col-span-1">
                     <span className="font-mono text-[12px] tracking-widest text-accent">
                       {String(ci + 1).padStart(2, "0")}
@@ -335,7 +335,7 @@ function CoreFeatures({ data }: Props) {
 
                 {/* Feature grid under each category */}
                 <div
-                  className={`grid sm:grid-cols-2 ${cat.items.length === 4
+                  className={`grid grid-cols-1 sm:grid-cols-2 ${cat.items.length === 4
                     ? "lg:grid-cols-4"
                     : "lg:grid-cols-3"
                     } gap-px bg-border border border-border mb-0`}
@@ -390,7 +390,7 @@ function KeyModules({ data }: Props) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
           {data.modules.map((mod, i) => {
             const Icon = mod.icon;
             return (
@@ -603,7 +603,7 @@ function SecuritySection({ data }: Props) {
           </div>
 
           {/* Right — numbered list */}
-          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-px bg-background/10">
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-px bg-background/10">
             {data.security.map((item, i) => (
               <div
                 key={item}
@@ -741,12 +741,12 @@ function AnalyticsSection({ data }: Props) {
             {data.analytics.map((item, i) => (
               <div
                 key={item}
-                className="grid grid-cols-12 gap-4 py-7 group hover:bg-secondary/30 px-2 -mx-2 transition-colors"
+                className="flex gap-6 py-7 group hover:bg-secondary/30 px-2 -mx-2 transition-colors"
               >
-                <div className="col-span-1 font-mono text-[12px] text-accent tabular-nums pt-1">
+                <div className="shrink-0 font-mono text-[12px] text-accent tabular-nums pt-1">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <div className="col-span-11 font-display text-xl lg:text-2xl leading-snug">
+                <div className="flex-1 font-display text-xl lg:text-2xl leading-snug">
                   {item}
                 </div>
               </div>
@@ -888,7 +888,7 @@ function ProcessTimeline({ data }: Props) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {steps.map((step, i) => (
             <div
               key={step.phase}
@@ -985,8 +985,8 @@ function ComparisonTable({ data }: Props) {
           </div>
         </div>
 
-        {/* Table header */}
-        <div className="grid grid-cols-12 gap-0 border border-border border-b-0">
+        {/* Table header - Desktop Only */}
+        <div className="hidden lg:grid grid-cols-12 gap-0 border border-border border-b-0">
           <div className="col-span-4 bg-secondary/30 p-5 border-r border-border">
             <span className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
               Criterion
@@ -1008,22 +1008,29 @@ function ComparisonTable({ data }: Props) {
           {rows.map((row, i) => (
             <div
               key={i}
-              className="grid grid-cols-12 group hover:bg-secondary/20 transition-colors"
+              className="flex flex-col lg:grid lg:grid-cols-12 group hover:bg-secondary/20 transition-colors"
             >
-              <div className="col-span-4 p-5 border-r border-border flex items-center">
+              {/* Criterion - Mobile Header style */}
+              <div className="lg:col-span-4 p-5 border-b lg:border-b-0 lg:border-r border-border flex items-center bg-secondary/5 lg:bg-transparent">
                 <span className="font-display text-lg tracking-tight">
                   {row.criterion}
                 </span>
               </div>
-              <div className="col-span-4 p-5 border-r border-border bg-accent/5 flex items-center gap-3">
-                <Check className="h-4 w-4 text-accent flex-shrink-0" />
-                <span className="text-sm leading-relaxed">{row.us}</span>
-              </div>
-              <div className="col-span-4 p-5 flex items-center gap-3">
-                <Minus className="h-4 w-4 text-muted-foreground/40 flex-shrink-0" />
-                <span className="text-sm text-muted-foreground leading-relaxed">
-                  {row.them}
-                </span>
+              
+              <div className="flex-1 grid grid-cols-2 lg:col-span-8 divide-x divide-border">
+                {/* Us */}
+                <div className="p-5 lg:border-r border-border bg-accent/[0.03] lg:bg-accent/5 flex items-start lg:items-center gap-3">
+                  <Check className="h-4 w-4 text-accent flex-shrink-0 mt-0.5 lg:mt-0" />
+                  <span className="text-xs lg:text-sm leading-relaxed font-medium">{row.us}</span>
+                </div>
+                
+                {/* Them */}
+                <div className="p-5 flex items-start lg:items-center gap-3">
+                  <Minus className="h-4 w-4 text-muted-foreground/40 flex-shrink-0 mt-0.5 lg:mt-0" />
+                  <span className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
+                    {row.them}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -1092,7 +1099,7 @@ function TestimonialsSection({ data }: Props) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-background/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-background/10">
           {testimonials.map((t, i) => (
             <div
               key={i}
@@ -1245,12 +1252,12 @@ function UseCases({ data }: Props) {
           {data.useCases.map((uc, i) => (
             <div
               key={i}
-              className="grid grid-cols-12 gap-6 py-7 group hover:bg-secondary/30 px-2 -mx-2 transition-colors cursor-default"
+              className="flex gap-6 py-7 group hover:bg-secondary/30 px-2 -mx-2 transition-colors cursor-default"
             >
-              <div className="col-span-1 font-mono text-[12px] text-accent tabular-nums pt-1.5">
+              <div className="shrink-0 font-mono text-[12px] text-accent tabular-nums pt-1.5">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="col-span-11 font-display text-xl lg:text-2xl leading-snug tracking-tight">
+              <div className="flex-1 font-display text-xl lg:text-2xl leading-snug tracking-tight">
                 {uc}
               </div>
             </div>

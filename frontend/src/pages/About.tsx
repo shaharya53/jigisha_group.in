@@ -43,11 +43,11 @@ const ROADMAP = [
 ];
 
 const MISSIONS = [
-  { icon: TrendingUp, code: "01", name: "Mission Grow India", desc: "Scaling industrial operations and revenue across India's growth corridors." },
-  { icon: ShieldCheck, code: "02", name: "Mission Pro India", desc: "Building professional-grade systems, governance and talent pipelines." },
-  { icon: Leaf, code: "03", name: "Mission Jai Kisan", desc: "Empowering the agricultural sector through Agro Fusion and rural industry." },
-  { icon: Factory, code: "04", name: "Mission Agro Fusion", desc: "Integrating agriculture with industrial supply chains for national food security." },
-  { icon: Globe, code: "05", name: "Mission Go Global", desc: "Expanding Jigisha's industrial universe into international markets." },
+  { img: "/images/growindia.png", code: "01", name: "Mission Grow India", desc: "Scaling industrial operations and revenue across India's growth corridors.", link: "https://growindia.goldbirdindia.com/", icon: TrendingUp },
+  { img: "/images/proindia.png", code: "02", name: "Mission Pro India", desc: "Building professional-grade systems, governance and talent pipelines.", link: "https://proindia.goldbirdindia.com/", icon: ShieldCheck },
+  { img: "/images/jaikrisan.png", code: "03", name: "Mission Jai Kisan", desc: "Empowering the agricultural sector through Agro Fusion and rural industry.", link: "https://jaikisan.goldbirdindia.com/", icon: Leaf },
+  { img: "/images/agrofusion.png", code: "04", name: "Mission Agro Fusion", desc: "Integrating agriculture with industrial supply chains for national food security.", link: "https://agrofusion.in/", icon: Zap },
+  { img: "/images/goglobal.png", code: "05", name: "Mission Go Global", desc: "Expanding Jigisha's industrial universe into international markets.", link: "https://goglobal.goldbirdindia.com/", icon: Globe },
 ];
 
 const LEADERSHIP = [
@@ -138,7 +138,7 @@ function HeroSection() {
               <Link to="/contact" className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-7 py-4 mono text-xs tracking-[0.25em] uppercase hover:bg-accent/90 transition-colors">
                 Start a Conversation <ArrowRight className="h-3.5 w-3.5" />
               </Link>
-              <Link to="/services" className="inline-flex items-center gap-3 border border-primary-foreground/30 text-primary-foreground px-7 py-4 mono text-xs tracking-[0.25em] uppercase hover:border-accent hover:text-accent transition-colors">
+              <Link to="/services/railway" className="inline-flex items-center gap-3 border border-primary-foreground/30 text-primary-foreground px-7 py-4 mono text-xs tracking-[0.25em] uppercase hover:border-accent hover:text-accent transition-colors">
                 Our Services
               </Link>
             </div>
@@ -276,11 +276,11 @@ function GroupScale() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {STATS.map((s, i) => (
-            <div key={s.label} className={`p-10 lg:p-12 relative group hover:bg-primary hover:text-primary-foreground transition-all ${i % 2 === 0 ? "bg-background" : "bg-secondary/20"}`}>
+            <div key={s.label} className={`p-8 lg:p-12 relative group hover:bg-primary hover:text-primary-foreground transition-all ${i % 2 === 0 ? "bg-background" : "bg-secondary/20"}`}>
               <div className="absolute top-4 right-4 mono text-[11px] tracking-widest text-accent">{String(i + 1).padStart(2, "0")}</div>
-              <AnimatedStat value={s.n} className="font-display text-6xl lg:text-7xl tabular-nums leading-none" />
+              <AnimatedStat value={s.n} className="font-display text-5xl lg:text-7xl tabular-nums leading-none" />
               <div className="mt-4 mono text-[11px] tracking-widest uppercase text-muted-foreground group-hover:text-primary-foreground/60">{s.label}</div>
               <div className="mt-6 h-px w-8 bg-accent group-hover:w-16 transition-all" />
             </div>
@@ -569,25 +569,28 @@ function MissionGoldBird() {
 
         {/* Left — mission selector */}
         <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-border">
-          {MISSIONS.map(({ icon: Icon, code, name }, i) => (
+          {MISSIONS.map((m, i) => (
             <div
-              key={code}
+              key={m.code}
               onMouseEnter={() => setActive(i)}
-              className="relative cursor-default border-b border-border last:border-b-0 bg-background hover:bg-secondary/40 transition-colors duration-200 overflow-hidden"
+              onClick={() => setActive(i)}
+              className={`group relative cursor-pointer border-b border-border last:border-b-0 transition-all duration-300 overflow-hidden
+                ${active === i ? "bg-accent/5" : "bg-background hover:bg-secondary/20"}`}
             >
-              {/* Active accent dot indicator */}
-              <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-accent transition-opacity duration-200 ml-3
-                ${active === i ? "opacity-100" : "opacity-0"}`} />
-              <div className="px-8 py-6 flex items-center gap-5">
-                <div className="h-11 w-11 grid place-items-center border border-border shrink-0">
-                  <Icon className="h-4 w-4 text-accent" />
+              {/* Active accent bar indicator */}
+              <div className={`absolute left-0 top-0 bottom-0 w-1 bg-accent transition-transform duration-300 origin-left
+                ${active === i ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100 opacity-30"}`} />
+
+              <div className="px-8 py-7 flex items-center gap-6 transition-transform duration-300 group-hover:translate-x-1">
+                <div className="h-12 w-12 grid place-items-center border border-border shrink-0 bg-transparent overflow-hidden p-2 transition-transform duration-500 group-hover:scale-110">
+                  <img src={m.img} alt={m.name} className="h-full w-full object-contain" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="mono text-[11px] tracking-widest uppercase text-accent block mb-0.5">{code}</span>
-                  <h3 className={`font-display text-xl transition-colors duration-200 ${active === i ? "text-accent" : ""}`}>{name}</h3>
+                  <span className="mono text-[11px] tracking-widest uppercase text-accent block mb-0.5">{m.code}</span>
+                  <h3 className={`font-display text-xl transition-colors duration-200 ${active === i ? "text-accent" : ""}`}>{m.name}</h3>
                 </div>
-                <ArrowRight className={`h-4 w-4 text-accent flex-shrink-0 transition-all duration-200
-                  ${active === i ? "opacity-100" : "opacity-0"}`} />
+                <ArrowRight className={`h-4 w-4 text-accent flex-shrink-0 transition-all duration-300
+                  ${active === i ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4 group-hover:opacity-40 group-hover:translate-x-0"}`} />
               </div>
             </div>
           ))}
@@ -629,8 +632,11 @@ function MissionGoldBird() {
 
             {/* Mission content */}
             <div>
-              <div className="h-16 w-16 grid place-items-center border border-primary-foreground/15 bg-primary-foreground/5 mb-8">
-                <ActiveIcon className="h-7 w-7 text-accent" />
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-12 w-12 grid place-items-center border border-primary-foreground/15 bg-primary-foreground/5 text-accent">
+                  <ActiveIcon className="h-6 w-6 stroke-[1.5]" />
+                </div>
+                <div className="h-px w-12 bg-accent/30" />
               </div>
               <h2 className="font-display text-4xl lg:text-6xl leading-tight mb-5">
                 {current.name}
@@ -640,23 +646,17 @@ function MissionGoldBird() {
               </p>
             </div>
 
-            {/* Bottom: prev / next */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setActive(i => Math.max(0, i - 1))}
-                disabled={active === 0}
-                className="mono text-[11px] tracking-widest uppercase text-primary-foreground/30 hover:text-accent transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+            {/* Bottom: Redirect Button */}
+            <div className="flex items-center gap-4 mt-8">
+              <a
+                href={current.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-accent text-accent-foreground px-10 py-5 mono text-xs tracking-[0.25em] uppercase hover:bg-white hover:text-primary transition-all duration-300 group shadow-lg"
               >
-                ← Prev
-              </button>
+                Visit Website <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
+              </a>
               <div className="h-px flex-1 bg-primary-foreground/10" />
-              <button
-                onClick={() => setActive(i => Math.min(MISSIONS.length - 1, i + 1))}
-                disabled={active === MISSIONS.length - 1}
-                className="mono text-[11px] tracking-widest uppercase text-primary-foreground/30 hover:text-accent transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-              >
-                Next →
-              </button>
             </div>
           </div>
         </div>
@@ -688,11 +688,11 @@ function LeadershipSection() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {LEADERSHIP.map((l, i) => (
             <div key={l.name} className="bg-background group hover:bg-primary hover:text-primary-foreground transition-all">
               {/* Avatar */}
-              <div className="relative h-56 bg-secondary/60 group-hover:bg-primary/60 transition-colors overflow-hidden flex items-center justify-center border-b border-border group-hover:border-primary-foreground/10">
+              <div className="relative h-64 sm:h-56 bg-secondary/60 group-hover:bg-primary/60 transition-colors overflow-hidden flex items-center justify-center border-b border-border group-hover:border-primary-foreground/10">
                 <div className="absolute inset-0 bg-dots opacity-20" />
                 <span className="relative font-display text-6xl text-primary/30 group-hover:text-primary-foreground/20 select-none">
                   {l.initials}
@@ -839,7 +839,7 @@ function Footprint() {
           </div>
           <div className="lg:col-span-6">
             {/* Stat trio */}
-            <div className="grid grid-cols-3 gap-px bg-border border border-border mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border mb-6">
               {[
                 { n: "5,000+", label: "Branch Nodes", animated: true },
                 { n: "12", label: "Indian Cities", animated: false },

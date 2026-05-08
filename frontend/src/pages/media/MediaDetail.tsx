@@ -88,7 +88,7 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
   const rest = words.slice(0, -1).join(" ");
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gray-950 text-white">
+    <section className="relative min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden bg-gray-950 text-white py-20 lg:py-0">
       {/* Background Image with Cinematic Overlays */}
       <div className="absolute inset-0 z-0">
         <img
@@ -107,8 +107,8 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
           {/* Title Block */}
           <div className="lg:col-span-7">
             <h1
-              className="font-display leading-[0.95] tracking-tighter mb-8"
-              style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
+              className="font-display leading-[0.95] tracking-tighter mb-8 text-center lg:text-left"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 6.5rem)" }}
             >
               {rest} <br />
               <span className="italic text-gray-400">{accent_word}</span>
@@ -118,17 +118,17 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
               {data.hero.subtitle ?? data.hero.description}
             </p>
 
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 lg:gap-6">
               <a
                 href="#overview"
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full text-white font-bold text-sm transition-all hover:scale-105"
+                className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold text-sm transition-all hover:scale-105"
                 style={{ background: ac }}
               >
                 Launch Experience <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/10 text-white font-bold text-sm hover:bg-white/5 transition-all backdrop-blur-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/10 text-white font-bold text-sm hover:bg-white/5 transition-all backdrop-blur-sm"
               >
                 Editorial Desk
               </Link>
@@ -306,16 +306,73 @@ function IntroSection({ data }: any) {
 ═══════════════════════════════════════════════════════════════ */
 function IntroManifesto({ data }: any) {
   return (
-    <section className="py-24 bg-gray-50 border-b border-gray-100">
-      <div className="container mx-auto px-8 lg:px-12 text-center">
-        <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-6">Manifesto</div>
-        <blockquote className="font-serif text-3xl lg:text-5xl leading-snug max-w-4xl mx-auto text-gray-800 italic">
-          {data.intro.content.join(" · ")}
-        </blockquote>
+    <section className="py-24 lg:py-40 bg-white relative overflow-hidden border-b border-gray-100">
+      {/* Background Decor */}
+      <div className="absolute inset-0 bg-dots opacity-[0.05] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-blue-50/50 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-8 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+          {/* LEFT: The Editorial Core */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="mono text-[11px] font-bold tracking-[0.4em] uppercase text-blue-600">Vision // Protocol</span>
+              <div className="h-px w-20 bg-blue-100" />
+            </div>
+            <blockquote className="font-serif text-xl lg:text-2xl text-gray-900 leading-[1.6] tracking-tight italic">
+              {data.intro.content.join(" · ")}
+            </blockquote>
+            <div className="mt-12 flex items-center gap-6">
+               <div className="h-px w-12 bg-gray-950" />
+               <span className="mono text-[10px] font-bold tracking-widest uppercase text-gray-400">Published by J.B. Editorial Desk</span>
+            </div>
+          </div>
+
+          {/* RIGHT: Cinematic Generated Image */}
+          <div className="lg:col-span-5">
+             <div className="relative group">
+                {/* Decorative Technical Frame */}
+                <div className="absolute -inset-4 border border-blue-100 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
+                
+                <div className="relative aspect-square rounded-[1.5rem] overflow-hidden border border-gray-100 shadow-2xl">
+                   <img 
+                      src="/images/industrial_vision.png" 
+                      alt="Industrial Vision" 
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+                   />
+                   
+                   {/* Overlay HUD */}
+                   <div className="absolute inset-0 bg-linear-to-t from-gray-950/60 via-transparent to-transparent opacity-60" />
+                   <div className="absolute bottom-6 left-6 right-6">
+                      <div className="flex items-center justify-between">
+                         <div className="mono text-[9px] tracking-[0.3em] text-white/70 uppercase">Visual Asset // Manifesto_v1</div>
+                         <div className="h-1 w-1 rounded-full bg-blue-400 animate-pulse" />
+                      </div>
+                   </div>
+                </div>
+
+                {/* Floating Tech Badge */}
+                <div className="absolute -bottom-6 -left-6 bg-white p-4 shadow-xl border border-gray-100 rounded-xl hidden lg:block">
+                   <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                         <Shield className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                         <div className="text-[10px] font-bold text-gray-900 uppercase tracking-tighter">Verified Vision</div>
+                         <div className="text-[9px] text-gray-400 mono">Strategic Alignment 2025</div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+
+
+
 
 
 /* ═══════════════════════════════════════════════════════════════
@@ -332,14 +389,14 @@ function Divisions({ data, activeTab, setActiveTab }: any) {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-0 border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
           {/* tabs list */}
-          <div className="lg:col-span-4 flex flex-col border-r border-gray-100">
+          <div className="lg:col-span-4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-gray-100 no-scrollbar">
             {data.sections?.map((sec: any, i: number) => (
               <button
                 key={sec.id}
                 onMouseEnter={() => setActiveTab(i)}
-                className={`relative text-left px-8 py-6 border-b border-gray-100 last:border-0 transition-all
+                className={`relative text-left px-6 lg:px-8 py-4 lg:py-6 border-r lg:border-r-0 lg:border-b border-gray-100 last:border-0 transition-all shrink-0 min-w-[160px] lg:min-w-0
                   ${activeTab === i
                     ? "bg-blue-50 text-blue-800"
                     : "bg-white text-gray-500 hover:bg-gray-50"}`}
@@ -364,9 +421,9 @@ function Divisions({ data, activeTab, setActiveTab }: any) {
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                     />
                   </div>
-                  <div className="p-10">
+                  <div className="p-6 lg:p-10">
                     <h3 className="font-serif text-2xl text-gray-900 mb-6">{sec.title}</h3>
-                    <ul className="grid sm:grid-cols-2 gap-4">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {sec.points.map((pt: string, idx: number) => (
                         <li key={idx} className="flex items-start gap-3 text-sm text-gray-500">
                           <CheckCircle2 className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
@@ -435,20 +492,20 @@ function BusinessModel({ data }: any) {
           </h2>
         </div>
         <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
-          <div className="grid grid-cols-2 bg-gray-900 text-white px-8 py-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 bg-gray-900 text-white px-8 py-5">
             <div className="text-xs font-bold tracking-widest uppercase text-gray-400">Category</div>
-            <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Scale</div>
+            <div className="hidden sm:block text-xs font-bold tracking-widest uppercase text-blue-400">Scale</div>
           </div>
           {data.model.map((row: any, i: number) => (
             <div
               key={i}
-              className="grid grid-cols-2 px-8 py-5 border-b last:border-0 hover:bg-blue-50/30 transition-colors group"
+              className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4 px-8 py-5 border-b last:border-0 hover:bg-blue-50/30 transition-colors group"
               style={{ borderColor: "#f3f4f6" }}
             >
               <div className="font-semibold text-gray-900 text-sm group-hover:text-blue-700 transition-colors">
                 {row.category}
               </div>
-              <div className="text-sm text-gray-400 group-hover:text-gray-700 transition-colors">
+              <div className="text-sm text-gray-400 group-hover:text-gray-700 transition-colors self-start sm:self-center">
                 {row.data}
               </div>
             </div>
@@ -466,7 +523,7 @@ function InsightPanel({ data }: any) {
   const points = data.intro?.content ?? [];
   if (!points.length) return null;
   return (
-    <section className="py-32 lg:py-48 bg-white overflow-hidden relative">
+    <section className="py-20 lg:py-24 bg-white overflow-hidden relative">
       {/* Background Subtle Texture */}
       <div className="absolute inset-0 bg-dots opacity-[0.05] pointer-events-none" />
 
@@ -533,7 +590,7 @@ function InsightPanel({ data }: any) {
         </div>
 
         {/* Bottom Decorative Edge */}
-        <div className="mt-32 flex items-center justify-between border-t border-gray-100 pt-12">
+        <div className="mt-16 flex items-center justify-between border-t border-gray-100 pt-12">
           <div className="mono text-[9px] text-gray-300 tracking-[0.5em] uppercase">End_Of_Dispatch</div>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map(dot => (
@@ -563,7 +620,7 @@ function Testimonials({ data }: any) {
   }, [api]);
 
   return (
-    <section className="py-24 bg-white border-b border-gray-100">
+    <section className="py-16 bg-white border-b border-gray-100">
       <div className="container mx-auto px-8 lg:px-12">
         <div className="text-center mb-14">
           <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-3">Industry Voices</div>
@@ -578,7 +635,7 @@ function Testimonials({ data }: any) {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full relative"
         >
           <CarouselContent className="-ml-5">
             {data.testimonials.map((t: any, i: number) => (
@@ -601,7 +658,13 @@ function Testimonials({ data }: any) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex justify-center gap-4 mt-10">
+          
+          {/* Side Buttons for Desktop */}
+          <CarouselPrevious className="hidden lg:flex -left-16 h-12 w-12 border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-600 transition-all" />
+          <CarouselNext className="hidden lg:flex -right-16 h-12 w-12 border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-600 transition-all" />
+          
+          {/* Bottom Buttons for Mobile */}
+          <div className="flex justify-center gap-4 mt-10 lg:hidden">
             <CarouselPrevious className="static translate-y-0" />
             <CarouselNext className="static translate-y-0" />
           </div>
@@ -768,7 +831,7 @@ function MagazineExtras() {
               Past <span className="italic text-gray-400">Editions</span>
             </h2>
           </div>
-          <div className="grid lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {editions.map((ed, i) => (
               <div
                 key={i}
@@ -1000,7 +1063,7 @@ function PortfolioExtras() {
               Sector <span className="italic text-gray-400">Matrix</span>
             </h2>
           </div>
-          <div className="grid lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { sector: "Railway", items: ["Rolling stock", "ICBMRO", "OHE", "S&T", "Wagons"], color: "#eff6ff|#1d4ed8" },
               { sector: "Metro Rail", items: ["CBTC", "AFC Gates", "PSD", "Depot Equipment", "SCADA"], color: "#eff6ff|#1d4ed8" },
@@ -1094,7 +1157,7 @@ function CatalogueExtras() {
               RFQ in <span className="italic text-gray-400">4 Steps</span>
             </h2>
           </div>
-          <div className="grid lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {rfqSteps.map((s, i) => (
               <div key={i} className="relative">
                 {i < rfqSteps.length - 1 && (

@@ -286,7 +286,13 @@ export default function GetQuotePage() {
     try {
       setSending(true);
       const fd = new FormData();
-      Object.entries(values).forEach(([k, v]) => fd.append(k, String(v)));
+      Object.entries(values).forEach(([k, v]) => {
+        let key = k;
+        if (k === "pincode") key = "pinCode";
+        if (k === "orderScale") key = "projectScale";
+        if (k === "productItem") key = "product";
+        fd.append(key, String(v));
+      });
       if (attachment) fd.append("attachment", attachment);
 
       const apiBase = (import.meta as any).env?.VITE_API_URL || "";
@@ -297,7 +303,11 @@ export default function GetQuotePage() {
         if (Array.isArray(data?.errors)) {
           const serverErrs: FormErrors = {};
           for (const err of data.errors) {
-            if (err?.field) serverErrs[err.field as keyof FormValues] = err.message;
+            let field = err.field;
+            if (field === "pinCode") field = "pincode";
+            if (field === "projectScale") field = "orderScale";
+            if (field === "product") field = "productItem";
+            if (field) serverErrs[field as keyof FormValues] = err.message;
           }
           setErrors(serverErrs);
         }
@@ -332,7 +342,7 @@ export default function GetQuotePage() {
       </div>
 
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative bg-[#0a192f] overflow-hidden pt-32 pb-40">
+      <section className="relative bg-[#0a192f] overflow-hidden py-20 lg:py-40">
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle,white 1px,transparent 1px)", backgroundSize: "32px 32px" }}
@@ -342,7 +352,7 @@ export default function GetQuotePage() {
 
         <div className="relative max-w-7xl mx-auto px-4 md:px-8">
           <p className="text-blue-500 text-[11px] font-bold tracking-[0.22em] uppercase mb-4">Request Pricing</p>
-          <h1 className="text-5xl md:text-6xl xl:text-7xl font-black text-white leading-[0.9] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-6xl xl:text-7xl font-black text-white leading-[0.9] tracking-tight mb-5">
             Get a Quote
           </h1>
           <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl">
@@ -359,8 +369,9 @@ export default function GetQuotePage() {
             <div
               key={title}
               className={`flex items-start gap-3.5 p-5 hover:bg-blue-500/3 transition-colors
-                ${i < BENEFITS.length - 1 ? "border-r border-border" : ""}
-                ${i < 2 ? "border-b md:border-b-0 border-border" : ""}`}
+                ${i % 2 === 0 ? "border-r border-border" : "sm:border-r sm:border-border"}
+                ${i < 2 ? "border-b border-border" : "md:border-b-0"}
+                ${i === 2 ? "border-b md:border-b-0" : ""}`}
             >
               <div className="w-10 h-10 rounded-xl bg-[#0a192f] flex items-center justify-center shrink-0 shadow-sm">
                 <Icon className="w-4.5 h-4.5 text-blue-500" />
@@ -375,7 +386,7 @@ export default function GetQuotePage() {
       </div>
 
       {/* ── BODY ───────────────────────────────────────────────── */}
-      <section className="py-16 bg-background">
+      <section className="py-10 lg:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
 
@@ -397,7 +408,7 @@ export default function GetQuotePage() {
                   </p>
                 </div>
               ) : (
-                <div className="bg-card rounded-2xl border border-border shadow-sm p-7 md:p-9">
+                <div className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-10">
                   <form onSubmit={handleSubmit} noValidate>
 
                     {/* ── 1. Contact Information ─────────────── */}

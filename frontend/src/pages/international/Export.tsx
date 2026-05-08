@@ -607,7 +607,7 @@ function ExportCertifications() {
           </div>
 
           {/* Right: cert cards */}
-          <div className="grid grid-cols-2 divide-x divide-primary-foreground/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-primary-foreground/10">
             {CERTIFICATIONS.map((cert, i) => (
               <div
                 key={i}
@@ -715,7 +715,7 @@ function ExportTrackRecord() {
             </div>
 
             {/* 3 impact counters */}
-            <div className="grid grid-cols-3 gap-px bg-border border border-border">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border">
               {[
                 { value: c1, suffix: "+", label: "Crore export value (FY24)", prefix: "₹" },
                 { value: c2, suffix: "yr", label: "Export track record", prefix: "" },

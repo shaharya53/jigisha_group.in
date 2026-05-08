@@ -16,14 +16,14 @@ const HEROES = [
 const VERBS = ["Buy", "Sell", "Maintain", "Empower", "Plan", "Build", "Design", "Develop", "Supply", "Stock", "Deliver", "Trade", "Repair", "Operate", "Secure", "Help", "Think", "Execute", "Support", "Co-Operate", "Value", "Care"];
 
 const ENTITIES_DATA = [
-  { n: "01", name: "Jigisha Enterprises Ltd.", sector: "Holding & Governance", logo: "/images/all_company/JE.png", to: "#" },
-  { n: "02", name: "Jigisha Infotech Pvt Ltd", sector: "Technology & IT", logo: "/images/all_company/INFOTECH.png", to: "#" },
-  { n: "03", name: "Jigisha Media Vision Pvt Ltd", sector: "Media & Communications", logo: "/images/all_company/MEDIA.png", to: "#" },
-  { n: "04", name: "Jigisha Engineering Pvt Ltd", sector: "Engineering & Manufacturing", logo: "/images/all_company/ENGINEERING.png", to: "#" },
-  { n: "05", name: "Jigisha Envirocare Pvt Ltd", sector: "Environment & Green Tech", logo: "/images/all_company/ENVIROCARE.png", to: "#" },
-  { n: "06", name: "Jigisha Infin Pvt Ltd", sector: "Finance & Credit", logo: "/images/all_company/INFIN.png", to: "#" },
-  { n: "07", name: "Jigisha Logistics Pvt Ltd", sector: "Logistics & Supply Chain", logo: "/images/all_company/LOGISTICS.png", to: "#" },
-  { n: "08", name: "Jigisha Industrial Services Pvt Ltd", sector: "Services & Maintenance", logo: "/images/all_company/INDUSTRIES.png", to: "#" },
+  { n: "01", name: "Jigisha Enterprises Ltd.", sector: "Holding & Governance", logo: "/images/all_company/JE.png", to: "https://jigisha.group/" },
+  { n: "02", name: "Jigisha Infotech Pvt Ltd", sector: "Technology & IT", logo: "/images/all_company/INFOTECH.png", to: "https://jigishainfotech.com/" },
+  { n: "03", name: "Jigisha Media Vision Pvt Ltd", sector: "Media & Communications", logo: "/images/all_company/MEDIA.png", to: "https://jigisha.media/" },
+  { n: "04", name: "Jigisha Engineering Pvt Ltd", sector: "Engineering & Manufacturing", logo: "/images/all_company/ENGINEERING.png", to: "https://jigisha.engineering/" },
+  { n: "05", name: "Jigisha Envirocare Pvt Ltd", sector: "Environment & Green Tech", logo: "/images/all_company/ENVIROCARE.png", to: "https://www.jigishaenviro.com/" },
+  { n: "06", name: "Jigisha Infin Pvt Ltd", sector: "Finance & Credit", logo: "/images/all_company/INFIN.png", to: "https://jigishainfin.com/" },
+  { n: "07", name: "Jigisha Logistics Pvt Ltd", sector: "Logistics & Supply Chain", logo: "/images/all_company/LOGISTICS.png", to: "https://logistic.goldbirdindia.com/" },
+  { n: "08", name: "Jigisha Industrial Services Pvt Ltd", sector: "Services & Maintenance", logo: "/images/all_company/INDUSTRIES.png", to: "https://jigisha.services" },
 ];
 
 const ALL_LOGOS = [
@@ -34,10 +34,10 @@ const ALL_LOGOS = [
 ];
 
 const SERVICES_CARDS = [
-  { code: "01", t: "Railway Services", d: "Manufacturing, supply and on-site execution for Indian Railway production & maintenance units.", to: "/services" },
-  { code: "02", t: "Metro Rail Services", d: "Supply and service contracts across India's expanding metro networks.", to: "/services" },
-  { code: "03", t: "Industrial Services", d: "Preventive & predictive maintenance, automation and heavy commissioning.", to: "/services" },
-  { code: "04", t: "Commercial AMC", d: "AMC, CMC, RRT and SLA-based execution with uptime guarantees.", to: "/services" },
+  { code: "01", t: "Railway Services", d: "Manufacturing, supply and on-site execution for Indian Railway production & maintenance units.", to: "/services/railway" },
+  { code: "02", t: "Metro Rail Services", d: "Supply and service contracts across India's expanding metro networks.", to: "/services/metro" },
+  { code: "03", t: "Industrial Services", d: "Preventive & predictive maintenance, automation and heavy commissioning.", to: "/services/industrial" },
+  { code: "04", t: "Commercial AMC", d: "AMC, CMC, RRT and SLA-based execution with uptime guarantees.", to: "/services/commercial" },
 ];
 
 export default function Home() {
@@ -134,9 +134,9 @@ function Hero() {
         </div>
 
         {/* Bottom stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 pt-8 border-t border-border">
-          {[["23", "Group entities"], ["72", "Verticals"], ["5,000+", "Service nodes"]].map(([n, l]) => (
-            <div key={l}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 pt-8 border-t border-border">
+          {[["23", "Group entities"], ["72", "Verticals"], ["5,000+", "Service nodes"]].map(([n, l], i) => (
+            <div key={l} className={i === 2 ? "col-span-2 sm:col-span-1" : ""}>
               <AnimatedStat value={n} className="font-display text-3xl sm:text-4xl leading-none block" />
               <div className="mono text-[11px] tracking-widest uppercase text-accent mt-1.5 leading-tight">{l}</div>
             </div>
@@ -397,21 +397,24 @@ function FeaturedProjects() {
       desc: "Comprehensive annual maintenance contract covering mechanical and electrical diagnostics for high-speed rolling stock across multiple zones.",
       details: "Our dedicated engineering teams achieved 99.8% fleet uptime over a 24-month cycle, deploying predictive maintenance AI and real-time remote monitoring.",
       tag: "Railway",
-      image: "/images/rail_maintenance.png"
+      image: "/images/rail_maintenance.png",
+      to: "/media/news"
     },
     {
       title: "Smart Metro Depot Electrification",
       desc: "Turnkey electrical infrastructure setup and advanced signaling integration for a newly expanded metropolitan transit depot.",
       details: "Executed zero-disruption SCADA implementations alongside 15km of heavy-duty OHE cabling, significantly boosting regional transit throughput.",
       tag: "Metro",
-      image: "/images/rail_smart.png"
+      image: "/images/rail_smart.png",
+      to: "/media/portfolio"
     },
     {
       title: "Heavy Fabrication & Logistics",
       desc: "Supply, installation, and end-to-end logistics for precision-engineered traction components required by major PSU manufacturers.",
       details: "Delivered 10,000+ precision forged units ahead of schedule using our automated supply chain network and 24/7 dedicated regional hubs.",
       tag: "Industrial",
-      image: "/images/rail_electrical.png"
+      image: "/images/rail_electrical.png",
+      to: "/media/magazine"
     }
   ];
 
@@ -461,7 +464,7 @@ function FeaturedProjects() {
                       <p className="text-primary-foreground/90 leading-relaxed text-sm mb-6 line-clamp-4">
                         {p.details}
                       </p>
-                      <Link to="/media/portfolio" className="inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-accent hover:text-primary-foreground transition-colors">
+                      <Link to={p.to} className="inline-flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-accent hover:text-primary-foreground transition-colors">
                         View Case Study <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
@@ -479,18 +482,18 @@ function FeaturedProjects() {
 function IndustriesSection() {
   /* Left bento col — 3 larger cards */
   const leftCards = [
-    { title: "Railways", stat: "500+ contracts", desc: "Complete supply chain & AMC for Indian Railways.", icon: Train, bg: "bg-accent/[0.1]", text: "text-foreground" },
-    { title: "Heavy Industry", stat: "1,000+ units", desc: "Precision engineering for massive-scale operations.", icon: Factory, bg: "bg-secondary/60", text: "text-foreground" },
-    { title: "Infrastructure", stat: "Turnkey ready", desc: "Turnkey project support and structural logistics.", icon: Building2, bg: "bg-primary text-primary-foreground", text: "text-primary-foreground" },
+    { title: "Railways", stat: "500+ contracts", desc: "Complete supply chain & AMC for Indian Railways.", icon: Train, bg: "bg-accent/[0.1]", text: "text-foreground", to: "/services/railway" },
+    { title: "Heavy Industry", stat: "1,000+ units", desc: "Precision engineering for massive-scale operations.", icon: Factory, bg: "bg-secondary/60", text: "text-foreground", to: "/services/industrial" },
+    { title: "Infrastructure", stat: "Turnkey ready", desc: "Turnkey project support and structural logistics.", icon: Building2, bg: "bg-primary text-primary-foreground", text: "text-primary-foreground", to: "/services/industrial" },
   ];
 
   /* Right bento col — 5 smaller cards */
   const rightCards = [
-    { title: "Metro Rail", stat: "12+ cities", desc: "Urban transit networks.", icon: TrainFront, bg: "bg-secondary/40", text: "text-foreground" },
-    { title: "Energy & Power", stat: "99.9% uptime", desc: "Critical power grid components.", icon: Zap, bg: "bg-foreground text-primary-foreground", text: "text-primary-foreground" },
-    { title: "Logistics", stat: "Pan-India", desc: "Automated warehousing & distribution.", icon: Truck, bg: "bg-accent/[0.07]", text: "text-foreground" },
-    { title: "Manufacturing", stat: "CNC precision", desc: "Advanced machining & fabrication.", icon: Cpu, bg: "bg-secondary/50", text: "text-foreground" },
-    { title: "Defense & PSU", stat: "Mil-spec quality", desc: "Secure government contracts.", icon: ShieldCheck, bg: "bg-accent text-white", text: "text-white" },
+    { title: "Metro Rail", stat: "12+ cities", desc: "Urban transit networks.", icon: TrainFront, bg: "bg-secondary/40", text: "text-foreground", to: "/services/metro" },
+    { title: "Energy & Power", stat: "99.9% uptime", desc: "Critical power grid components.", icon: Zap, bg: "bg-foreground text-primary-foreground", text: "text-primary-foreground", to: "/services/industrial" },
+    { title: "Logistics", stat: "Pan-India", desc: "Automated warehousing & distribution.", icon: Truck, bg: "bg-accent/[0.07]", text: "text-foreground", to: "/services/commercial" },
+    { title: "Manufacturing", stat: "CNC precision", desc: "Advanced machining & fabrication.", icon: Cpu, bg: "bg-secondary/50", text: "text-foreground", to: "/services/industrial" },
+    { title: "Defense & PSU", stat: "Mil-spec quality", desc: "Secure government contracts.", icon: ShieldCheck, bg: "bg-accent text-white", text: "text-white", to: "/services/industrial" },
   ];
 
   return (
@@ -536,11 +539,10 @@ function IndustriesSection() {
               {leftCards.map(({ title, stat, desc, icon: Icon, bg, text }) => (
                 <div
                   key={title}
-                  className={`group relative flex flex-col justify-between p-7 flex-1 overflow-hidden cursor-default hover:opacity-95 transition-opacity ${bg}`}
+                  className={`group relative flex flex-col justify-between p-7 flex-1 overflow-hidden transition-all ${bg}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <Icon className={`h-5 w-5 ${text === "text-primary-foreground" ? "text-accent" : "text-accent"}`} />
-                    <ArrowRight className={`h-4 w-4 opacity-30 group-hover:opacity-70 group-hover:translate-x-0.5 transition-all ${text}`} />
                   </div>
                   <div>
                     <div className={`font-display text-3xl lg:text-4xl leading-tight mb-1 ${text}`}>{title}</div>
@@ -549,7 +551,7 @@ function IndustriesSection() {
                     </div>
                     <p className={`text-sm leading-relaxed opacity-70 ${text}`}>{desc}</p>
                   </div>
-                </div>
+                  </div>
               ))}
             </div>
 
@@ -558,7 +560,7 @@ function IndustriesSection() {
               {rightCards.map(({ title, stat, desc, icon: Icon, bg, text }) => (
                 <div
                   key={title}
-                  className={`group relative flex flex-col justify-between p-5 flex-1 overflow-hidden cursor-default hover:opacity-95 transition-opacity ${bg}`}
+                  className={`group relative flex flex-col justify-between p-5 flex-1 overflow-hidden transition-all ${bg}`}
                 >
                   <Icon className="h-4 w-4 text-accent mb-3" />
                   <div>
@@ -568,7 +570,7 @@ function IndustriesSection() {
                     </div>
                     <p className={`text-xs leading-relaxed opacity-60 ${text}`}>{desc}</p>
                   </div>
-                </div>
+                  </div>
               ))}
             </div>
           </div>
@@ -597,15 +599,15 @@ function Universe() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {stages.map((s, i) => (
-            <div key={s[0]} className="bg-secondary/20 border border-border p-10 rounded-3xl relative hover:-translate-y-2 transition-transform duration-500">
-              <div className="absolute top-10 right-10 font-display text-6xl text-accent/10 pointer-events-none select-none">
+            <div key={s[0]} className="bg-secondary/20 border border-border p-8 lg:p-10 rounded-3xl relative hover:-translate-y-2 transition-transform duration-500">
+              <div className="absolute top-8 right-8 lg:top-10 lg:right-10 font-display text-5xl lg:text-6xl text-accent/10 pointer-events-none select-none">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="font-mono text-xs tracking-widest uppercase text-accent mb-4 px-3 py-1 bg-accent/10 inline-block rounded-full">{s[0]}</div>
-              <h3 className="font-display text-3xl mb-4">{s[1]}</h3>
-              <p className="text-muted-foreground leading-relaxed">{s[2]}</p>
+              <div className="font-mono text-[10px] lg:text-xs tracking-widest uppercase text-accent mb-4 px-3 py-1 bg-accent/10 inline-block rounded-full">{s[0]}</div>
+              <h3 className="font-display text-2xl lg:text-3xl mb-4">{s[1]}</h3>
+              <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">{s[2]}</p>
             </div>
           ))}
         </div>
@@ -720,27 +722,33 @@ function GroupSection() {
         </div>
 
         {/* Entity cards — 4-col grid, logo + sector + future website link */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {ENTITIES_DATA.map(({ n, name, sector, logo, to }) => (
             <a
               key={n}
               href={to}
-              className="group bg-background flex flex-col hover:bg-accent/[0.03] transition-colors duration-200 relative overflow-hidden"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group bg-background flex flex-col hover:bg-accent/[0.03] transition-colors duration-200 relative overflow-hidden ${to === "#" ? "pointer-events-none" : ""}`}
               aria-label={name}
             >
-              <div className="flex items-center justify-center border-b border-border bg-secondary/20 px-6 py-8 h-32 group-hover:bg-accent/5 transition-colors duration-200">
+              <div className="flex items-center justify-center border-b border-border bg-secondary/20 px-6 py-6 h-28 lg:h-32 group-hover:bg-accent/5 transition-colors duration-200">
                 <img
                   src={logo}
                   alt={name}
-                  className="max-h-14 max-w-full object-contain group-hover:scale-105 transition-all duration-300"
+                  className="max-h-12 lg:max-h-14 max-w-full object-contain group-hover:scale-105 transition-all duration-300"
                 />
               </div>
               <div className="p-5 flex flex-col flex-1">
-                <span className="mono text-[11px] tracking-widest uppercase text-accent mb-2">{n} · {sector}</span>
+                <span className="mono text-[10px] lg:text-[11px] tracking-widest uppercase text-accent mb-2">{n} · {sector}</span>
                 <div className="font-display text-base leading-snug flex-1">{name}</div>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <span className="mono text-[11px] text-muted-foreground/40 tracking-widest uppercase group-hover:text-accent/60 transition-colors">
-                    {to === "#" ? "Coming soon" : "Visit site"}
+                  <span className="mono text-[10px] lg:text-[11px] tracking-widest uppercase group-hover:text-accent/60 transition-colors">
+                    {!to || to === "#" ? (
+                      <span className="text-muted-foreground/40">Coming soon</span>
+                    ) : (
+                      <span className="text-accent font-bold">Visit site</span>
+                    )}
                   </span>
                   <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/25 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200" />
                 </div>
@@ -749,11 +757,7 @@ function GroupSection() {
           ))}
         </div>
 
-        <div className="mt-5 flex items-center gap-4">
-          <div className="h-px flex-1 bg-border" />
-          <span className="mono text-[11px] tracking-widest uppercase text-muted-foreground/40">+ 15 more entities under development</span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
+        
       </div>
     </section>
   );
