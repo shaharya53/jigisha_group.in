@@ -34,8 +34,8 @@ export function IndiaMap() {
     const accent = getAccentColor();
 
     const map = L.map(containerRef.current, {
-      center: [22.5, 82.5],
-      zoom: 4,
+      center: [22.5, 78.5],
+      zoom: window.innerWidth < 768 ? 3.5 : 4.2,
       zoomControl: false,
       attributionControl: false,
       scrollWheelZoom: false,
@@ -74,7 +74,14 @@ export function IndiaMap() {
     });
 
     mapRef.current = map;
+
+    const handleResize = () => {
+      map.setZoom(window.innerWidth < 768 ? 3.5 : 4.2);
+    };
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       map.remove();
       mapRef.current = null;
     };

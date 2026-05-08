@@ -84,7 +84,7 @@ function ICBMROHero() {
               <img 
                 src="/images/rail_smart.png" 
                 alt="Industrial Synergy" 
-                className="w-full h-full object-cover grayscale opacity-40 mix-blend-multiply"
+                className="w-full h-full object-cover grayscale opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-background/50" />
             </div>

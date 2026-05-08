@@ -54,7 +54,7 @@ function InternationalHero() {
     <section className="relative min-h-[85vh] flex flex-col justify-center bg-primary text-primary-foreground overflow-hidden">
       {/* Background Dots */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px] opacity-40" />
-      
+
       {/* Rotating Globe Graphic */}
       <div className="absolute -right-40 -bottom-40 opacity-10 pointer-events-none mix-blend-overlay">
         <Globe2 className="w-[800px] h-[800px] animate-[spin_120s_linear_infinite]" />
@@ -62,12 +62,12 @@ function InternationalHero() {
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 lg:px-10 py-24">
 
-        
+
         <h1 className="font-display text-5xl md:text-7xl lg:text-[7rem] leading-[0.85] tracking-tight max-w-5xl">
           A global mandate,<br />
           <span className="italic text-accent">executed locally.</span>
         </h1>
-        
+
         <p className="mt-10 text-xl md:text-2xl text-primary-foreground/70 max-w-2xl font-light leading-relaxed">
           Jigisha operates an international business arm covering import, export, ICBMRO and a portfolio of cross-border ventures.
         </p>
@@ -104,7 +104,7 @@ function GlobalPillars() {
               <div key={p.n} className="group relative bg-secondary/10 border border-border p-8 lg:p-10 rounded-3xl overflow-hidden hover:bg-secondary/30 transition-colors duration-500">
                 {/* Accent line on hover */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                
+
                 <div className="flex justify-between items-start mb-16">
                   <div className="p-4 bg-background border border-border rounded-2xl shadow-sm group-hover:border-accent/30 group-hover:bg-accent/5 transition-colors">
                     <Icon className="w-8 h-8 text-foreground group-hover:text-accent transition-colors" />
@@ -139,7 +139,7 @@ function VenturesSection() {
           <div>
             <div className="mono text-[12px] tracking-widest uppercase text-accent mb-4">Strategic Expansion</div>
             <h2 className="font-display text-5xl lg:text-7xl leading-none">
-              Six routes to the <br className="hidden lg:block"/><span className="italic text-accent">global market.</span>
+              Six routes to the <br className="hidden lg:block" /><span className="italic text-accent">global market.</span>
             </h2>
           </div>
           <Link to="/contact" className="inline-flex items-center gap-3 font-mono text-sm font-bold tracking-[0.2em] uppercase text-primary hover:text-accent transition-colors group">
@@ -151,18 +151,18 @@ function VenturesSection() {
           {VENTURES.map((v, i) => {
             const Icon = v.icon;
             return (
-              <div 
-                key={v.t} 
+              <div
+                key={v.t}
                 className={`group relative bg-background border border-border p-8 lg:p-10 rounded-3xl overflow-hidden hover:shadow-2xl hover:border-accent/30 transition-all duration-500 hover:-translate-y-1 ${v.col}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="relative z-10 flex flex-col h-full justify-between">
                   <div className="flex justify-between items-start mb-14">
                     <Icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
-                    <span className="mono text-[12px] tracking-widest text-muted-foreground/50">V.{String(i+1).padStart(2, "0")}</span>
+                    <span className="mono text-[12px] tracking-widest text-muted-foreground/50">V.{String(i + 1).padStart(2, "0")}</span>
                   </div>
-                  
+
                   <div>
                     <h3 className={`font-display leading-tight mb-4 group-hover:text-accent transition-colors ${v.size}`}>
                       {v.t}

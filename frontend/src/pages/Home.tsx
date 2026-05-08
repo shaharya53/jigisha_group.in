@@ -13,24 +13,24 @@ const HEROES = [
   { tag: "Vol. 05", title: "Driven by Innovation. Powered by Expertise.", body: "Full-scale engineering for critical infrastructure uptime and performance." },
 ];
 
-const VERBS = ["Buy","Sell","Maintain","Empower","Plan","Build","Design","Develop","Supply","Stock","Deliver","Trade","Repair","Operate","Secure","Help","Think","Execute","Support","Co-Operate","Value","Care"];
+const VERBS = ["Buy", "Sell", "Maintain", "Empower", "Plan", "Build", "Design", "Develop", "Supply", "Stock", "Deliver", "Trade", "Repair", "Operate", "Secure", "Help", "Think", "Execute", "Support", "Co-Operate", "Value", "Care"];
 
 const ENTITIES_DATA = [
-  { n: "01", name: "Jigisha Enterprises Ltd.",            sector: "Holding & Governance",        logo: "/images/all_company/JE.png",          to: "#" },
-  { n: "02", name: "Jigisha Infotech Pvt Ltd",            sector: "Technology & IT",             logo: "/images/all_company/INFOTECH.png",     to: "#" },
-  { n: "03", name: "Jigisha Media Vision Pvt Ltd",        sector: "Media & Communications",      logo: "/images/all_company/MEDIA.png",        to: "#" },
-  { n: "04", name: "Jigisha Engineering Pvt Ltd",         sector: "Engineering & Manufacturing", logo: "/images/all_company/ENGINEERING.png",  to: "#" },
-  { n: "05", name: "Jigisha Envirocare Pvt Ltd",          sector: "Environment & Green Tech",    logo: "/images/all_company/ENVIROCARE.png",   to: "#" },
-  { n: "06", name: "Jigisha Infin Pvt Ltd",               sector: "Finance & Credit",            logo: "/images/all_company/INFIN.png",        to: "#" },
-  { n: "07", name: "Jigisha Logistics Pvt Ltd",           sector: "Logistics & Supply Chain",    logo: "/images/all_company/LOGISTICS.png",    to: "#" },
-  { n: "08", name: "Jigisha Industrial Services Pvt Ltd", sector: "Services & Maintenance",      logo: "/images/all_company/INDUSTRIES.png",   to: "#" },
+  { n: "01", name: "Jigisha Enterprises Ltd.", sector: "Holding & Governance", logo: "/images/all_company/JE.png", to: "#" },
+  { n: "02", name: "Jigisha Infotech Pvt Ltd", sector: "Technology & IT", logo: "/images/all_company/INFOTECH.png", to: "#" },
+  { n: "03", name: "Jigisha Media Vision Pvt Ltd", sector: "Media & Communications", logo: "/images/all_company/MEDIA.png", to: "#" },
+  { n: "04", name: "Jigisha Engineering Pvt Ltd", sector: "Engineering & Manufacturing", logo: "/images/all_company/ENGINEERING.png", to: "#" },
+  { n: "05", name: "Jigisha Envirocare Pvt Ltd", sector: "Environment & Green Tech", logo: "/images/all_company/ENVIROCARE.png", to: "#" },
+  { n: "06", name: "Jigisha Infin Pvt Ltd", sector: "Finance & Credit", logo: "/images/all_company/INFIN.png", to: "#" },
+  { n: "07", name: "Jigisha Logistics Pvt Ltd", sector: "Logistics & Supply Chain", logo: "/images/all_company/LOGISTICS.png", to: "#" },
+  { n: "08", name: "Jigisha Industrial Services Pvt Ltd", sector: "Services & Maintenance", logo: "/images/all_company/INDUSTRIES.png", to: "#" },
 ];
 
 const ALL_LOGOS = [
-  "AGRO","AUTOMOBILES","DEFENSE","ENGINEERING","ENVIROCARE",
-  "GO GLOBAL","GREEN","INDUSTRIES","INFIN","INFOTECH","INFRA",
-  "INTERNATIONAL","JE","JEEPL","JGC","JISPL","JIU",
-  "LOGISTICS","MEDIA","PHARMA","RAILTECH","RETAIL","TECHNOLOGIES",
+  "AGRO", "AUTOMOBILES", "DEFENSE", "ENGINEERING", "ENVIROCARE",
+  "GO GLOBAL", "GREEN", "INDUSTRIES", "INFIN", "INFOTECH", "INFRA",
+  "INTERNATIONAL", "JE", "JEEPL", "JGC", "JISPL", "JIU",
+  "LOGISTICS", "MEDIA", "PHARMA", "RAILTECH", "RETAIL", "TECHNOLOGIES",
 ];
 
 const SERVICES_CARDS = [
@@ -68,7 +68,7 @@ const SLIDE_IMAGES = [
 
 function Hero() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused]  = useState(false);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (paused) return;
@@ -157,7 +157,7 @@ function Hero() {
             onMouseEnter={() => setActive(idx)}
             className="relative overflow-hidden cursor-pointer bg-primary transition-all duration-500 ease-in-out shrink-0"
             style={{
-              width:    idx === active ? "300px" : "64px",
+              width: idx === active ? "300px" : "64px",
               minWidth: idx === active ? "300px" : "64px",
               maxWidth: idx === active ? "300px" : "64px",
               borderRadius: "22px",
@@ -227,10 +227,10 @@ function Ticker() {
       <div className="marquee-mask">
         <div className="ticker flex gap-10 whitespace-nowrap font-display text-xl lg:text-2xl text-foreground/70" style={{ animationDuration: "22s" }}>
           {row.map((t, i) => (
-             <span key={i} className="flex items-center gap-10">
-               <span className="italic">{t}</span>
-               <span className="text-accent text-base">✦</span>
-             </span>
+            <span key={i} className="flex items-center gap-10">
+              <span className="italic">{t}</span>
+              <span className="text-accent text-base">✦</span>
+            </span>
           ))}
         </div>
       </div>
@@ -246,7 +246,7 @@ function AboutSection() {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-5">
             <h2 className="font-display text-5xl lg:text-7xl leading-[0.9] mb-10">
-              An Indian-accent <br/><span className="italic text-accent">industrial universe.</span>
+              An Indian-accent <br /><span className="italic text-accent">industrial universe.</span>
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p className="text-2xl text-foreground font-display leading-snug">
@@ -260,14 +260,14 @@ function AboutSection() {
               Discover Our Story <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
-          
+
           <div className="lg:col-span-7 relative">
             <div className="aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative">
               <img src="/images/home_about.png" alt="Industrial Gears" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
               <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 p-6 lg:p-8 bg-background/90 backdrop-blur-md rounded-2xl shadow-2xl border border-border max-w-[250px] lg:max-w-[300px]">
-                 <AnimatedStat value="23" className="font-display text-5xl lg:text-6xl text-accent block mb-2" />
-                 <div className="font-mono text-[11px] lg:text-xs uppercase tracking-widest text-muted-foreground">Specialist Subsidiaries under Jigisha Enterprises</div>
+                <AnimatedStat value="23" className="font-display text-5xl lg:text-6xl text-accent block mb-2" />
+                <div className="font-mono text-[11px] lg:text-xs uppercase tracking-widest text-muted-foreground">Specialist Subsidiaries under Jigisha Enterprises</div>
               </div>
             </div>
           </div>
@@ -308,10 +308,10 @@ function ClientsSection() {
       <div className="marquee-mask mb-24">
         <div className="ticker flex gap-16 sm:gap-24 whitespace-nowrap px-10">
           {row.map((c, i) => (
-             <div key={i} className="flex flex-col items-center justify-center grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-700 cursor-pointer min-w-[200px] group">
-               <div className="font-display text-3xl sm:text-4xl text-foreground font-bold tracking-tight group-hover:text-accent transition-colors">{c.name}</div>
-               <div className="font-mono text-[12px] tracking-[0.2em] uppercase mt-3 text-muted-foreground group-hover:text-foreground transition-colors">{c.ind}</div>
-             </div>
+            <div key={i} className="flex flex-col items-center justify-center grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-700 cursor-pointer min-w-[200px] group">
+              <div className="font-display text-3xl sm:text-4xl text-foreground font-bold tracking-tight group-hover:text-accent transition-colors">{c.name}</div>
+              <div className="font-mono text-[12px] tracking-[0.2em] uppercase mt-3 text-muted-foreground group-hover:text-foreground transition-colors">{c.ind}</div>
+            </div>
           ))}
         </div>
       </div>
@@ -434,7 +434,7 @@ function FeaturedProjects() {
             <div key={i} className="group relative aspect-[3/4] md:aspect-auto md:h-[600px] rounded-3xl overflow-hidden cursor-pointer shadow-xl">
               {/* Background Image */}
               <img src={p.image} alt={p.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-              
+
               {/* Dark Overlays */}
               <div className="absolute inset-0 bg-primary/40 transition-opacity duration-500 group-hover:opacity-80" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
@@ -446,10 +446,10 @@ function FeaturedProjects() {
                     {p.tag}
                   </span>
                 </div>
-                
+
                 <div className="transition-transform duration-500 group-hover:-translate-y-20">
                   <h3 className="font-display text-3xl lg:text-4xl leading-tight mb-4">{p.title}</h3>
-                  
+
                   <div className="relative">
                     {/* Short Desc (visible by default) */}
                     <p className="text-primary-foreground/80 leading-relaxed line-clamp-2 transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-4">
@@ -479,18 +479,18 @@ function FeaturedProjects() {
 function IndustriesSection() {
   /* Left bento col — 3 larger cards */
   const leftCards = [
-    { title: "Railways",       stat: "500+ contracts",  desc: "Complete supply chain & AMC for Indian Railways.",     icon: Train,      bg: "bg-accent/[0.1]",                    text: "text-foreground" },
-    { title: "Heavy Industry", stat: "1,000+ units",    desc: "Precision engineering for massive-scale operations.",  icon: Factory,    bg: "bg-secondary/60",                    text: "text-foreground" },
-    { title: "Infrastructure", stat: "Turnkey ready",   desc: "Turnkey project support and structural logistics.",    icon: Building2,  bg: "bg-primary text-primary-foreground", text: "text-primary-foreground" },
+    { title: "Railways", stat: "500+ contracts", desc: "Complete supply chain & AMC for Indian Railways.", icon: Train, bg: "bg-accent/[0.1]", text: "text-foreground" },
+    { title: "Heavy Industry", stat: "1,000+ units", desc: "Precision engineering for massive-scale operations.", icon: Factory, bg: "bg-secondary/60", text: "text-foreground" },
+    { title: "Infrastructure", stat: "Turnkey ready", desc: "Turnkey project support and structural logistics.", icon: Building2, bg: "bg-primary text-primary-foreground", text: "text-primary-foreground" },
   ];
 
   /* Right bento col — 5 smaller cards */
   const rightCards = [
-    { title: "Metro Rail",    stat: "12+ cities",        desc: "Urban transit networks.",              icon: TrainFront, bg: "bg-secondary/40",                    text: "text-foreground" },
-    { title: "Energy & Power",stat: "99.9% uptime",      desc: "Critical power grid components.",      icon: Zap,        bg: "bg-foreground text-primary-foreground",text: "text-primary-foreground" },
-    { title: "Logistics",     stat: "Pan-India",         desc: "Automated warehousing & distribution.",icon: Truck,      bg: "bg-accent/[0.07]",                   text: "text-foreground" },
-    { title: "Manufacturing", stat: "CNC precision",     desc: "Advanced machining & fabrication.",    icon: Cpu,        bg: "bg-secondary/50",                    text: "text-foreground" },
-    { title: "Defense & PSU", stat: "Mil-spec quality",  desc: "Secure government contracts.",         icon: ShieldCheck,bg: "bg-accent text-white",               text: "text-white" },
+    { title: "Metro Rail", stat: "12+ cities", desc: "Urban transit networks.", icon: TrainFront, bg: "bg-secondary/40", text: "text-foreground" },
+    { title: "Energy & Power", stat: "99.9% uptime", desc: "Critical power grid components.", icon: Zap, bg: "bg-foreground text-primary-foreground", text: "text-primary-foreground" },
+    { title: "Logistics", stat: "Pan-India", desc: "Automated warehousing & distribution.", icon: Truck, bg: "bg-accent/[0.07]", text: "text-foreground" },
+    { title: "Manufacturing", stat: "CNC precision", desc: "Advanced machining & fabrication.", icon: Cpu, bg: "bg-secondary/50", text: "text-foreground" },
+    { title: "Defense & PSU", stat: "Mil-spec quality", desc: "Secure government contracts.", icon: ShieldCheck, bg: "bg-accent text-white", text: "text-white" },
   ];
 
   return (
@@ -609,7 +609,7 @@ function Universe() {
             </div>
           ))}
         </div>
-        
+
         {/* Scrolling verb ticker */}
         <div className="mt-16 pt-10 border-t border-border space-y-2.5 overflow-hidden">
 

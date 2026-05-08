@@ -71,7 +71,7 @@ function ExportHero() {
   return (
     <section className="relative min-h-screen bg-background border-b border-border overflow-hidden flex flex-col">
       {/* Top ruled bar */}
-   
+
 
       <div className="flex-1 grid lg:grid-cols-2 h-full">
         {/* Left: Main headline block */}
@@ -123,14 +123,14 @@ function ExportHero() {
         </div>
 
         {/* Right: Seamless Technical Visual */}
-        <div className="relative overflow-hidden bg-secondary">
-          <img 
-            src="/images/rail_smart.png" 
-            alt="Global Logistics" 
-            className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 mix-blend-multiply" 
+        <div className="relative overflow-hidden bg-accent/5">
+          <img
+            src="/images/rail_smart.png"
+            alt="Global Logistics"
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent lg:hidden" />
-          
+
           {/* Technical Crosshair Overlay */}
           <div className="absolute inset-0 flex items-center justify-center p-12 lg:p-24">
             <div className="w-full h-full border border-accent/20 relative group">
@@ -736,7 +736,8 @@ function ExportTrackRecord() {
           {/* Deal blotter table */}
           <div className="border border-border overflow-hidden bg-background">
             {/* Table header */}
-            <div className="grid grid-cols-[1fr_150px_120px_150px_120px_100px] gap-x-8 px-8 py-6 border-b-2 border-primary/10 bg-secondary/30">
+            {/* Table header - Desktop Only */}
+            <div className="hidden lg:grid grid-cols-[1fr_150px_120px_150px_120px_100px] gap-x-8 px-8 py-6 border-b-2 border-primary/10 bg-secondary/30">
               {["Commodity", "Type", "Volume", "Destination", "Value", "Year"].map((h) => (
                 <div key={h} className="mono text-xs tracking-widest uppercase text-muted-foreground font-semibold">{h}</div>
               ))}
@@ -747,21 +748,46 @@ function ExportTrackRecord() {
               {DEAL_RECORDS.map((deal, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-[1fr_150px_120px_150px_120px_100px] gap-x-8 px-8 py-7 hover:bg-secondary/40 transition-colors items-center group"
+                  className="flex flex-col lg:grid lg:grid-cols-[1fr_150px_120px_150px_120px_100px] gap-y-4 lg:gap-x-8 px-6 lg:px-8 py-7 hover:bg-secondary/40 transition-colors lg:items-center group"
                 >
-                  <div className="font-display text-xl leading-tight group-hover:text-accent transition-colors">{deal.commodity}</div>
-                  <div>
+                  <div className="flex items-start justify-between lg:block">
+                    <div className="font-display text-xl lg:text-xl leading-tight group-hover:text-accent transition-colors">{deal.commodity}</div>
+                    <div className="lg:hidden">
+                      <span className={`mono text-[10px] px-2.5 py-1 tracking-widest border border-border/50 uppercase ${TYPE_STYLES[deal.type] ?? "bg-secondary text-foreground"}`}>
+                        {deal.type}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Desktop Only Type */}
+                  <div className="hidden lg:block">
                     <span className={`mono text-[10px] px-2.5 py-1 tracking-widest border border-border/50 uppercase ${TYPE_STYLES[deal.type] ?? "bg-secondary text-foreground"}`}>
                       {deal.type}
                     </span>
                   </div>
-                  <div className="mono text-sm text-muted-foreground whitespace-nowrap">{deal.volume}</div>
-                  <div className="flex items-center gap-2.5">
-                    <Globe2 className="h-4 w-4 text-accent/70 shrink-0" />
-                    <span className="mono text-sm tracking-wide">{deal.destination}</span>
+
+                  <div className="grid grid-cols-2 lg:block gap-4">
+                    <div className="lg:hidden mono text-[10px] uppercase text-muted-foreground mb-1">Volume</div>
+                    <div className="mono text-sm text-muted-foreground whitespace-nowrap">{deal.volume}</div>
                   </div>
-                  <div className="font-display text-xl text-accent whitespace-nowrap">{deal.value}</div>
-                  <div className="mono text-sm text-muted-foreground font-medium">{deal.year}</div>
+
+                  <div className="grid grid-cols-2 lg:block gap-4">
+                    <div className="lg:hidden mono text-[10px] uppercase text-muted-foreground mb-1">Destination</div>
+                    <div className="flex items-center gap-2.5">
+                      <Globe2 className="h-4 w-4 text-accent/70 shrink-0" />
+                      <span className="mono text-sm tracking-wide">{deal.destination}</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 lg:block gap-4">
+                    <div className="lg:hidden mono text-[10px] uppercase text-muted-foreground mb-1">Value</div>
+                    <div className="font-display text-xl text-accent whitespace-nowrap">{deal.value}</div>
+                  </div>
+
+                  <div className="grid grid-cols-2 lg:block gap-4">
+                    <div className="lg:hidden mono text-[10px] uppercase text-muted-foreground mb-1">Year</div>
+                    <div className="mono text-sm text-muted-foreground font-medium">{deal.year}</div>
+                  </div>
                 </div>
               ))}
             </div>

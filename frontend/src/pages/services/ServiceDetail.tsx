@@ -72,64 +72,90 @@ function ServiceHero({ data, slug }: { data: any; slug: string }) {
   const [titleA, titleB] = data.hero.heading.split("–").map((s: string) => s.trim());
 
   return (
-    <section className="relative min-h-[60vh] flex flex-col justify-center bg-[#050505] text-white overflow-hidden border-b border-white/5">
-      {/* Cinematic Background Layer */}
+    <section className="relative min-h-screen flex flex-col bg-[#050505] text-white overflow-hidden border-b border-white/5">
+      {/* ─── IMMERSIVE FULL-SCREEN BACKGROUND ─── */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={data.hero.image} 
-          alt="" 
-          className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-110"
+        <img
+          src={data.hero.image}
+          alt=""
+          className="w-full h-full object-cover transition-transform duration-[20s] hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Subtle overlay for text readability */}
+        {/* Advanced Multi-Stop Gradient for Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent z-10" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-10 relative z-10 py-12 lg:py-24">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-6 lg:px-16 relative z-20 flex-1 flex flex-col justify-center py-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left: Heading & Branding - Full Width */}
-          <div className="lg:col-span-12">
-            <div className="flex items-center gap-4 mb-8">
-               <div className="h-7 w-7 rounded-lg flex items-center justify-center text-white shadow-lg" style={{ background: accent }}>
-                  {icons[slug]}
-               </div>
-               <span className="text-[11px] font-black tracking-[0.4em] uppercase text-white/80">
-                  {slug} // mission_link_v3
-               </span>
+          {/* Main Content (Left Anchor) */}
+          <div className="lg:col-span-8">
+            <div className="flex items-center gap-4 mb-8 reveal" style={{ animationDelay: '100ms' }}>
+              <div className="h-0.5 w-12 bg-blue-500" />
+              <span className="font-mono text-[10px] tracking-[0.4em] text-blue-400 uppercase font-bold">Industrial Vertical // 2024</span>
             </div>
 
-            <h1 className="font-display leading-[0.9] tracking-tighter text-white mb-8 max-w-4xl" style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5.5rem)' }}>
-              {titleA}
+            <h1 className="font-display leading-[0.88] tracking-tighter mb-10 reveal" style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)', animationDelay: '300ms' }}>
+              <span className="opacity-95">{titleA}</span>
               {titleB && (
                 <>
                   <br />
-                  <span style={{ color: accent }}>{titleB}</span>
+                  <span style={{ color: accent }} className="opacity-90">{titleB}</span>
                 </>
               )}
             </h1>
 
-            <p className="text-lg text-white/90 leading-relaxed font-light mb-10 max-w-3xl italic">
-              {data.hero.subheading}
-            </p>
+            <div className="max-w-2xl space-y-12 reveal" style={{ animationDelay: '500ms' }}>
+              <p className="text-2xl text-slate-300 leading-tight font-light italic border-l-2 border-blue-500/50 pl-10">
+                {data.hero.subheading}
+              </p>
 
-            <div className="flex flex-wrap gap-5">
-              <Link
-                to="/get-quote"
-                className="group inline-flex items-center gap-3 px-8 py-4 text-black font-bold text-sm rounded-xl transition-all hover:opacity-90 active:scale-95 shadow-xl"
-                style={{ background: accent }}
-              >
-                Initialize Protocol <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/get-quote"
-                className="inline-flex items-center gap-3 px-8 py-4 font-bold text-sm rounded-xl border border-white/10 text-white transition-all hover:bg-white/5"
-              >
-                Get Specifications
-              </Link>
+              {/* Technical Parameter Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10">
+                {data.hero.extraPoints?.slice(0, 3).map((p: string, i: number) => (
+                  <div key={i}>
+                    <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-2">Technical Spec 0{i+1}</div>
+                    <div className="text-sm font-bold text-white/70 uppercase leading-tight">{p}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Technical Metadata Card (Now visible from md screens) */}
+          <div className="hidden md:block lg:col-span-4 lg:pl-12 reveal" style={{ animationDelay: '700ms' }}>
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/20 p-8 lg:p-10 rounded-2xl shadow-2xl">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-10 w-10 bg-blue-500 rounded-xl flex items-center justify-center border border-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                  {icons[slug as keyof typeof icons] || <Activity className="h-5 w-5 text-white" />}
+                </div>
+                <div className="text-xs font-mono uppercase tracking-[0.2em] text-blue-400 font-bold">Status: Operational</div>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-2">Network Hub</div>
+                  <div className="text-sm font-bold text-white tracking-wider">JIGISHA GLOBAL NETWORK</div>
+                </div>
+                
+                <div className="h-px w-full bg-white/10" />
+                
+                <div className="space-y-4">
+                  <button className="w-full py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-blue-600 hover:text-white transition-all rounded-sm shadow-lg">
+                    Request Specifications
+                  </button>
+                  <p className="text-[10px] text-center text-white/30 font-mono uppercase tracking-tighter">
+                    Technical documentation v4.2.1
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Decorative Bottom Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-transparent to-transparent opacity-30" />
     </section>
   );
 }

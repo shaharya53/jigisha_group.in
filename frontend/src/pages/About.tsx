@@ -66,11 +66,11 @@ const INDIA_CITIES = [
 const GLOBAL_REGIONS = ["USA", "UK", "UAE", "Australia", "Canada"];
 
 const WHY_DATA = [
-  { n: "01", icon: Building2,   title: "Integrated Ecosystem", desc: "23 entities operating as one unified industrial platform — not a loose holding structure." },
-  { n: "02", icon: ShieldCheck, title: "Governance First",      desc: "Professional-grade compliance, risk management and board-level oversight across all subsidiaries." },
-  { n: "03", icon: Cpu,         title: "Innovation-Led",        desc: "Technology, IoT, ERP and AI woven into every operational layer." },
-  { n: "04", icon: TrendingUp,  title: "Mission-Aligned",       desc: "Directly tied to India's national industrial growth agenda via Mission Gold Bird India." },
-  { n: "05", icon: Globe,       title: "Long-Term Vision",      desc: "10-year roadmap targeting ₹96,700 Cr revenue with a clear path to global scale." },
+  { n: "01", icon: Building2, title: "Integrated Ecosystem", desc: "23 entities operating as one unified industrial platform — not a loose holding structure." },
+  { n: "02", icon: ShieldCheck, title: "Governance First", desc: "Professional-grade compliance, risk management and board-level oversight across all subsidiaries." },
+  { n: "03", icon: Cpu, title: "Innovation-Led", desc: "Technology, IoT, ERP and AI woven into every operational layer." },
+  { n: "04", icon: TrendingUp, title: "Mission-Aligned", desc: "Directly tied to India's national industrial growth agenda via Mission Gold Bird India." },
+  { n: "05", icon: Globe, title: "Long-Term Vision", desc: "10-year roadmap targeting ₹96,700 Cr revenue with a clear path to global scale." },
 ];
 
 /* ─── PAGE ──────────────────────────────────────────────────── */
@@ -145,7 +145,7 @@ function HeroSection() {
           </div>
 
           {/* Right: floating stat strip */}
-          
+
         </div>
 
         {/* Bottom meta bar */}
@@ -328,9 +328,8 @@ function WhatWeDo() {
             {SECTORS.map((s, i) => (
               <span
                 key={s}
-                className={`px-4 py-2 font-display text-base border transition-colors hover:border-accent hover:text-accent cursor-default ${
-                  i % 6 === 0 ? "bg-primary text-primary-foreground border-primary" : "border-border bg-background"
-                }`}
+                className={`px-4 py-2 font-display text-base border transition-colors hover:border-accent hover:text-accent cursor-default ${i % 6 === 0 ? "bg-primary text-primary-foreground border-primary" : "border-border bg-background"
+                  }`}
               >
                 {s}
               </span>
@@ -345,12 +344,12 @@ function WhatWeDo() {
 /* ─── 6. OUR STRUCTURE ───────────────────────────────────────── */
 function OurStructure() {
   const subsidiaries = [
-    ["JIT", "Jigisha Infotech Pvt Ltd",           "Technology & IT"],
-    ["JMV", "Jigisha Media Vision Pvt Ltd",        "Media & Communications"],
-    ["JEP", "Jigisha Engineering Pvt Ltd",         "Engineering & Manufacturing"],
-    ["JEC", "Jigisha Envirocare Pvt Ltd",          "Environment & Green Tech"],
-    ["JIF", "Jigisha Infin Pvt Ltd",               "Finance & Credit"],
-    ["JLP", "Jigisha Logistics Pvt Ltd",           "Logistics & Supply Chain"],
+    ["JIT", "Jigisha Infotech Pvt Ltd", "Technology & IT"],
+    ["JMV", "Jigisha Media Vision Pvt Ltd", "Media & Communications"],
+    ["JEP", "Jigisha Engineering Pvt Ltd", "Engineering & Manufacturing"],
+    ["JEC", "Jigisha Envirocare Pvt Ltd", "Environment & Green Tech"],
+    ["JIF", "Jigisha Infin Pvt Ltd", "Finance & Credit"],
+    ["JLP", "Jigisha Logistics Pvt Ltd", "Logistics & Supply Chain"],
     ["JIS", "Jigisha Industrial Services Pvt Ltd", "Services & Maintenance"],
   ];
 
@@ -879,7 +878,7 @@ function Footprint() {
               <div className="h-px w-10 bg-accent/40" />
             </div>
             {/* Panel */}
-            <div className="border border-border relative overflow-hidden min-h-90 flex-1">
+            <div className="border border-border relative overflow-hidden aspect-square md:aspect-auto md:min-h-90 flex-1">
               {/* Map fills the entire panel — isolate traps Leaflet's z-indexes */}
               <div className="absolute inset-0 isolate">
                 <IndiaMap />

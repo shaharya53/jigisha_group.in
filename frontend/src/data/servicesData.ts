@@ -40,7 +40,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         "Works on track machines, tower wagons, SPART",
         "Includes S&T systems, OHE, and station infrastructure"
       ],
-      image: "/images/train.png"
+      image: "/images/railway_hero_v2.png"
     },
     domains: [
       {

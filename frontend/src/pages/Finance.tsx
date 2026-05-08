@@ -35,9 +35,9 @@ export default function Finance() {
       <section className="relative h-screen flex items-center bg-white border-b border-border overflow-hidden">
         {/* Cinematic Background Image */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          <img 
-            src="/images/finance_hero_bg.jpg" 
-            alt="" 
+          <img
+            src="/images/finance_hero_bg.jpg"
+            alt=""
             className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
           />
         </div>
@@ -352,7 +352,8 @@ export default function Finance() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <div className="w-full">
             {/* Table Header */}
-            <div className="grid grid-cols-12 border-b-2 border-accent/20 pb-4 mb-0 px-6 mono text-[11px] tracking-[0.3em] text-accent uppercase font-bold">
+            {/* Table Header - Desktop Only */}
+            <div className="hidden md:grid grid-cols-12 border-b-2 border-accent/20 pb-4 mb-0 px-6 mono text-[11px] tracking-[0.3em] text-accent uppercase font-bold">
               <div className="col-span-1">ID</div>
               <div className="col-span-3">Institutional Pillar</div>
               <div className="col-span-8 text-right">Operational Framework & Protocols</div>
@@ -362,17 +363,18 @@ export default function Finance() {
             <div className="divide-y divide-border">
               {PILLARS.map((pillar, i) => (
                 <div key={i} className="grid grid-cols-12 py-10 px-6 group hover:bg-secondary/10 transition-colors items-start">
-                  {/* ID Column */}
-                  <div className="col-span-1 mono text-[12px] text-muted-foreground pt-1">
+                  {/* Desktop ID Column */}
+                  <div className="hidden md:block col-span-1 mono text-[12px] text-muted-foreground pt-1">
                     0{i + 1}.
                   </div>
 
                   {/* Title & Icon Column */}
-                  <div className="col-span-3 flex items-start gap-4">
+                  <div className="col-span-12 md:col-span-3 flex items-start gap-4 mb-6 md:mb-0">
                     <div className="w-6 h-6 mt-1 opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all">
                       {renderIcon(pillar.icon)}
                     </div>
                     <div>
+                      <div className="md:hidden mono text-[10px] text-accent mb-1">PILLAR 0{i + 1}</div>
                       <h3 className="font-display text-xl leading-none mb-2">{pillar.title}</h3>
                       <div className="mono text-[8px] tracking-widest text-muted-foreground uppercase">
                         Status: {i === 0 ? "Verified" : i === 1 ? "Active" : "Upstream"}
@@ -381,10 +383,10 @@ export default function Finance() {
                   </div>
 
                   {/* Items Column */}
-                  <div className="col-span-8">
-                    <div className="flex flex-wrap justify-end gap-x-8 gap-y-3">
+                  <div className="col-span-12 md:col-span-8">
+                    <div className="flex flex-wrap md:justify-end gap-x-4 md:gap-x-8 gap-y-3">
                       {pillar.items.map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-3 text-sm text-muted-foreground/80 hover:text-foreground transition-colors">
+                        <div key={idx} className="flex items-center gap-3 text-sm text-muted-foreground/80 hover:text-foreground transition-colors bg-secondary/30 md:bg-transparent px-3 py-1.5 md:p-0 rounded-sm">
                           <div className="w-1 h-[1px] bg-accent/40" />
                           {item}
                         </div>

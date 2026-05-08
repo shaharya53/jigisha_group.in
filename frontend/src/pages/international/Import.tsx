@@ -47,7 +47,7 @@ function ImportHero() {
   return (
     <section className="relative min-h-[85vh] flex items-center bg-background overflow-hidden border-b border-border">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-      <div className="absolute right-0 top-0 w-1/3 h-full bg-secondary/30 hidden lg:block" />
+      <div className="absolute right-0 top-0 w-1/3 h-full bg-accent/5 hidden lg:block" />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 relative z-10 w-full py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -78,7 +78,7 @@ function ImportHero() {
               <img
                 src="/images/rail_maintenance.png"
                 alt="Global Shipping"
-                className="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply"
+                className="w-full h-full object-cover grayscale opacity-80"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-background/95 backdrop-blur border border-border p-6 flex items-center justify-between shadow-xl">
                 <div>

@@ -73,19 +73,19 @@ function ServicesHero() {
     <section className="bg-primary text-primary-foreground border-b border-border relative overflow-hidden min-h-[70vh] flex flex-col justify-center">
       <div className="absolute inset-0 bg-blueprint opacity-[0.05] mix-blend-overlay" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 blur-[150px] pointer-events-none rounded-full" />
-      
+
       <div className="container mx-auto px-6 lg:px-10 relative z-10 py-24">
         <div className="max-w-4xl">
 
-          
-          <h1 className="font-display leading-[0.82] tracking-tighter reveal" 
-              style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", animationDelay: "300ms" }}>
+
+          <h1 className="font-display leading-[0.82] tracking-tighter reveal"
+            style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", animationDelay: "300ms" }}>
             Specialist <br />
             <span className="italic text-accent">Services.</span>
           </h1>
-          
+
           <p className="mt-12 text-primary-foreground/50 text-xl lg:text-2xl leading-relaxed max-w-2xl font-light reveal"
-             style={{ animationDelay: "500ms" }}>
+            style={{ animationDelay: "500ms" }}>
             A next-generation industrial solutions provider — combining advanced technology, deep domain expertise, and a nationwide service network.
           </p>
 
@@ -129,11 +129,11 @@ function ServiceGrid() {
               <p className="text-muted-foreground text-xl leading-relaxed font-light mb-12">
                 {s.blurb}
               </p>
-              <Link 
-                to={`/services/${s.slug}`} 
+              <Link
+                to={`/services/${s.slug}`}
                 className="group/btn flex items-center gap-6 mono text-[11px] font-bold tracking-[0.3em] uppercase text-accent"
               >
-                VIEW CAPABILITIES 
+                VIEW CAPABILITIES
                 <div className="h-12 w-12 border border-accent/30 rounded-full flex items-center justify-center group-hover/btn:bg-accent group-hover/btn:text-white transition-all">
                   <ArrowRight className="h-5 w-5" />
                 </div>
@@ -161,7 +161,7 @@ function ServiceGrid() {
                 <div className="bg-secondary/10 p-6 border-t border-border flex justify-between items-center">
                   <span className="mono text-[11px] text-muted-foreground uppercase tracking-widest">ISO 9001:2015 Compliant Deployment</span>
                   <div className="flex gap-1">
-                    {[1,2,3].map(d => <div key={d} className="h-1 w-1 bg-accent rounded-full opacity-30" />)}
+                    {[1, 2, 3].map(d => <div key={d} className="h-1 w-1 bg-accent rounded-full opacity-30" />)}
                   </div>
                 </div>
               </div>

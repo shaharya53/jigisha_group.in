@@ -29,12 +29,12 @@ const inquiryTypes = [
 ];
 
 const faqs = [
-  { q: "Where is your company located?",          a: "Our national headquarters are at F 904, 10th Floor, Rachna Tower, Rachna Nagar, Bhopal, Madhya Pradesh – 462023. We also have a registered office in Ahmedabad and plants in Bhopal." },
-  { q: "Can I visit your office?",                a: "Yes! We welcome partners, vendors and potential clients. Business hours are 24×7 — we are available round the clock including Sundays and public holidays." },
+  { q: "Where is your company located?", a: "Our national headquarters are at F 904, 10th Floor, Rachna Tower, Rachna Nagar, Bhopal, Madhya Pradesh – 462023. We also have a registered office in Ahmedabad and plants in Bhopal." },
+  { q: "Can I visit your office?", a: "Yes! We welcome partners, vendors and potential clients. Business hours are 24×7 — we are available round the clock including Sundays and public holidays." },
   { q: "How do I get directions to your office?", a: "Click the blue marker on our map and select 'Open in Google Maps' for real-time turn-by-turn directions to our HQ in Bhopal." },
-  { q: "What is your typical response time?",     a: "We guarantee a response within 12–24 business hours. Partnership, railway, and corporate queries are typically answered even faster." },
-  { q: "What is your minimum project size?",      a: "We work with businesses of all scales — from small vendors seeking GeM listing to enterprise-level EPC and long-term AMC contracts across every industrial vertical." },
-  { q: "Do you provide end-to-end logistics?",    a: "Absolutely. Through Jigisha Logistics Pvt. Ltd. we offer multimodal freight, PAN-India warehousing, cold chain, hazardous goods transport, and fleet management." },
+  { q: "What is your typical response time?", a: "We guarantee a response within 12–24 business hours. Partnership, railway, and corporate queries are typically answered even faster." },
+  { q: "What is your minimum project size?", a: "We work with businesses of all scales — from small vendors seeking GeM listing to enterprise-level EPC and long-term AMC contracts across every industrial vertical." },
+  { q: "Do you provide end-to-end logistics?", a: "Absolutely. Through Jigisha Logistics Pvt. Ltd. we offer multimodal freight, PAN-India warehousing, cold chain, hazardous goods transport, and fleet management." },
 ];
 
 const EMPTY = {
@@ -44,18 +44,18 @@ const EMPTY = {
 
 export default function Contact() {
   const { toasts, success, error } = useToast();
-  const [form, setForm]               = useState(EMPTY);
-  const [submitting, setSubmitting]   = useState(false);
-  const [submitted, setSubmitted]     = useState(false);
-  const [openFaq, setOpenFaq]         = useState<number | null>(null);
-  const [pinLoading, setPinLoading]   = useState(false);
+  const [form, setForm] = useState(EMPTY);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [pinLoading, setPinLoading] = useState(false);
 
   const splitRef = useRef(null);
-  const mapRef   = useRef(null);
-  const faqRef   = useRef(null);
-  const splitIn  = useInView(splitRef, { once: true, margin: "-80px" });
-  const mapIn    = useInView(mapRef,   { once: true, margin: "-80px" });
-  const faqIn    = useInView(faqRef,   { once: true, margin: "-80px" });
+  const mapRef = useRef(null);
+  const faqRef = useRef(null);
+  const splitIn = useInView(splitRef, { once: true, margin: "-80px" });
+  const mapIn = useInView(mapRef, { once: true, margin: "-80px" });
+  const faqIn = useInView(faqRef, { once: true, margin: "-80px" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
@@ -69,7 +69,7 @@ export default function Contact() {
     const t = setTimeout(async () => {
       try {
         const country = pin.length === 6 ? "India" : "United States";
-        const cc      = pin.length === 6 ? "IN"    : "US";
+        const cc = pin.length === 6 ? "IN" : "US";
 
         // Nominatim (OpenStreetMap) — reliable, free
         const res = await fetch(
@@ -83,8 +83,8 @@ export default function Contact() {
           const city =
             addr.city || addr.town || addr.village ||
             addr.state_district || addr.county || "";
-          const state   = addr.state   || "";
-          const ctry    = addr.country || country;
+          const state = addr.state || "";
+          const ctry = addr.country || country;
           if (city || state) {
             setForm(p => ({ ...p, city, state, country: ctry }));
             setPinLoading(false);
@@ -118,17 +118,17 @@ export default function Contact() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name:        form.name,
-          email:       form.email,
-          phone:       form.phone,
-          message:     form.message,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
           // Optional fields the backend might ignore but are good for context
-          company:     form.company,
+          company: form.company,
           enquiryType: form.inquiryType,
-          pincode:     form.pincode,
-          city:        form.city,
-          state:       form.state,
-          country:     form.country,
+          pincode: form.pincode,
+          city: form.city,
+          state: form.state,
+          country: form.country,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -151,10 +151,10 @@ export default function Contact() {
   };
 
   /* ── shared style helpers ── */
-  const PRIMARY     = "#2563eb";
-  const BG_DARK     = "#0a192f";
-  const TEXT_MUTED  = "#94a3b8";
-  const BORDER      = "rgba(255,255,255,0.1)";
+  const PRIMARY = "#2563eb";
+  const BG_DARK = "#0a192f";
+  const TEXT_MUTED = "#94a3b8";
+  const BORDER = "rgba(255,255,255,0.1)";
 
   const fieldInput: React.CSSProperties = {
     width: "100%", padding: "1.125rem 1.25rem",
@@ -223,14 +223,14 @@ export default function Contact() {
             className="grid grid-cols-2 md:grid-cols-4"
             style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "rgba(10,25,47,0.8)", backdropFilter: "blur(20px)", borderTop: `1px solid ${BORDER}`, padding: "2rem 1rem", zIndex: 20, gap: "1.5rem" }}>
             {[
-              { num: "24h",   label: "Response Guarantee" },
-              { num: "7,500+",label: "Verified Vendors" },
-              { num: "28+",   label: "Industry Sectors" },
-              { num: "99%",   label: "Delivery Success" },
+              { num: "24h", label: "Response Guarantee" },
+              { num: "7,500+", label: "Verified Vendors" },
+              { num: "28+", label: "Industry Sectors" },
+              { num: "99%", label: "Delivery Success" },
             ].map((s, i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-                   <AnimatedStat value={s.num} className="text-white" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)", fontWeight: 900, lineHeight: 1 }} />
+                  <AnimatedStat value={s.num} className="text-white" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)", fontWeight: 900, lineHeight: 1 }} />
                 </div>
                 <span style={{ fontSize: "0.625rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.2em", color: "#3b82f6", marginTop: "0.5rem" }}>{s.label}</span>
               </div>
@@ -261,9 +261,9 @@ export default function Contact() {
 
                 <div style={{ margin: "4rem 0", display: "flex", flexDirection: "column", gap: "2rem" }}>
                   {[
-                    { icon: <Phone size={16} />, label: "Call Us Directly",      val: "(+91) 9824724364" },
-                    { icon: <Mail size={16} />,  label: "Email Address",          val: "info@jigisha.in" },
-                    { icon: <MapPin size={16} />,label: "National Headquarters",  val: "Bhopal, MP, India" },
+                    { icon: <Phone size={16} />, label: "Call Us Directly", val: "(+91) 9824724364" },
+                    { icon: <Mail size={16} />, label: "Email Address", val: "info@jigisha.in" },
+                    { icon: <MapPin size={16} />, label: "National Headquarters", val: "Bhopal, MP, India" },
                   ].map((c, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
                       <div style={{ width: 40, height: 40, background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}`, borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center", color: PRIMARY }}>
@@ -386,8 +386,8 @@ export default function Contact() {
                     tag: "CORPORATE HQ",
                     details: [
                       { i: <MapPin size={14} />, text: "Bhopal, MP" },
-                      { i: <Mail size={14} />,   text: "india@jigisha.in" },
-                      { i: <Phone size={14} />,  text: "Mon–Fri, 9AM–6PM IST" },
+                      { i: <Mail size={14} />, text: "india@jigisha.in" },
+                      { i: <Phone size={14} />, text: "Mon–Fri, 9AM–6PM IST" },
                     ]
                   },
                   {
@@ -396,8 +396,8 @@ export default function Contact() {
                     tag: "VIRTUAL SUPPORT",
                     details: [
                       { i: <MapPin size={14} />, text: "Across India" },
-                      { i: <Mail size={14} />,   text: "support@jigisha.in" },
-                      { i: <Phone size={14} />,  text: "24/7 Global Desk" },
+                      { i: <Mail size={14} />, text: "support@jigisha.in" },
+                      { i: <Phone size={14} />, text: "24/7 Global Desk" },
                     ]
                   },
                   {
@@ -406,8 +406,8 @@ export default function Contact() {
                     tag: "FULFILLMENT",
                     details: [
                       { i: <MapPin size={14} />, text: "Inter-state Hubs" },
-                      { i: <Mail size={14} />,   text: "logistics@jigisha.in" },
-                      { i: <Phone size={14} />,  text: "Mon–Sat Ops" },
+                      { i: <Mail size={14} />, text: "logistics@jigisha.in" },
+                      { i: <Phone size={14} />, text: "Mon–Sat Ops" },
                     ]
                   }
                 ].map((card, idx) => (

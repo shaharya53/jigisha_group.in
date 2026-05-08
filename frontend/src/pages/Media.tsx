@@ -4,18 +4,18 @@ import { CTASection } from "@/components/site/CTASection";
 import { PageShell } from "@/components/site/PageShell";
 
 const CHANNELS = [
-  { n: "01", t: "News",      d: "Latest announcements, contracts won and group milestones.", tag: "LIVE",     to: "/media/news",      icon: Newspaper },
-  { n: "02", t: "Portfolio", d: "Project case studies across rail, metro and industry.",      tag: "ARCHIVE",  to: "/media/portfolio", icon: Globe },
-  { n: "03", t: "Magazine",  d: "Long-form editorial on industry, policy and people.",        tag: "MONTHLY",  to: "/media/magazine",  icon: BookOpen },
-  { n: "04", t: "Catalogue", d: "Product, component and machinery catalogues.",               tag: "DOWNLOAD", to: "/media/catalogue", icon: Download },
+  { n: "01", t: "News", d: "Latest announcements, contracts won and group milestones.", tag: "LIVE", to: "/media/news", icon: Newspaper },
+  { n: "02", t: "Portfolio", d: "Project case studies across rail, metro and industry.", tag: "ARCHIVE", to: "/media/portfolio", icon: Globe },
+  { n: "03", t: "Magazine", d: "Long-form editorial on industry, policy and people.", tag: "MONTHLY", to: "/media/magazine", icon: BookOpen },
+  { n: "04", t: "Catalogue", d: "Product, component and machinery catalogues.", tag: "DOWNLOAD", to: "/media/catalogue", icon: Download },
 ];
 
 const NEWS = [
-  { date: "27 · 04 · 2026", title: "Jigisha publishes Master Corporate Website DPR v1.0", cat: "Group"         },
-  { date: "12 · 04 · 2026", title: "New AMC contract with Western Railway production unit", cat: "Railway"      },
-  { date: "02 · 03 · 2026", title: "Industrial Loan facilitation scheme launched with NBFC partners", cat: "Finance"      },
+  { date: "27 · 04 · 2026", title: "Jigisha publishes Master Corporate Website DPR v1.0", cat: "Group" },
+  { date: "12 · 04 · 2026", title: "New AMC contract with Western Railway production unit", cat: "Railway" },
+  { date: "02 · 03 · 2026", title: "Industrial Loan facilitation scheme launched with NBFC partners", cat: "Finance" },
   { date: "18 · 02 · 2026", title: "Jigisha Logistics expands cross-border MRO operations", cat: "International" },
-  { date: "09 · 01 · 2026", title: "Founder's note: Building the Industrial Universe",      cat: "Editorial"    },
+  { date: "09 · 01 · 2026", title: "Founder's note: Building the Industrial Universe", cat: "Editorial" },
 ];
 
 export default function Media() {
@@ -37,7 +37,7 @@ function Masthead() {
       <div className="absolute inset-0 bg-blueprint opacity-[0.06] mix-blend-overlay" />
       <div className="absolute inset-0 bg-linear-to-b from-primary via-primary/80 to-primary" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/10 blur-[150px] pointer-events-none rounded-full" />
-      
+
       {/* Top Ticker Bar */}
       <div className="absolute top-0 left-0 w-full border-b border-primary-foreground/10 overflow-hidden py-3 marquee-mask z-20 bg-primary/40 backdrop-blur-md">
         <div className="ticker flex gap-0 whitespace-nowrap">
@@ -55,16 +55,16 @@ function Masthead() {
           {/* Left: Masthead Heading */}
           <div className="lg:col-span-7">
 
-            
-            <h1 className="font-display leading-[0.82] tracking-tighter reveal" 
-                style={{ fontSize: "clamp(4rem, 10vw, 11rem)", animationDelay: "300ms" }}>
+
+            <h1 className="font-display leading-[0.82] tracking-tighter reveal"
+              style={{ fontSize: "clamp(4rem, 10vw, 11rem)", animationDelay: "300ms" }}>
               Industrial<br />
               <span className="italic text-accent bg-linear-to-r from-accent to-accent/60 bg-clip-text text-transparent">Universe</span><br />
               Media.
             </h1>
-            
+
             <p className="mt-12 text-primary-foreground/50 text-xl lg:text-2xl leading-relaxed max-w-2xl font-light reveal"
-               style={{ animationDelay: "500ms" }}>
+              style={{ animationDelay: "500ms" }}>
               Stay close to the pulse of execution — live news, project portfolios, and industrial insights from the Jigisha Group.
             </p>
 
@@ -90,7 +90,7 @@ function Masthead() {
                   <span>LATEST DISPATCH</span>
                   <Zap className="h-4 w-4" />
                 </div>
-                
+
                 <div className="flex flex-col divide-y divide-primary-foreground/10">
                   {NEWS.slice(0, 3).map(({ date, title, cat }) => (
                     <a key={title} href="#" className="group/item py-8 flex flex-col gap-3 first:pt-0 last:pb-0 hover:translate-x-2 transition-transform">
@@ -104,10 +104,10 @@ function Masthead() {
                     </a>
                   ))}
                 </div>
-                
+
                 <div className="mt-10 pt-10 border-t border-primary-foreground/10">
                   <Link to="#" className="group flex items-center gap-4 mono text-[11px] font-bold tracking-[0.3em] uppercase text-accent">
-                    VIEW FULL ARCHIVE 
+                    VIEW FULL ARCHIVE
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
                   </Link>
                 </div>
@@ -182,31 +182,32 @@ function Channels() {
             {CHANNELS.slice(1).map((chan, i) => {
               const Icon = chan.icon;
               return (
-              <Link
-                key={chan.n}
-                to={chan.to}
-                className="group relative bg-background p-12 flex items-center justify-between overflow-hidden hover:bg-secondary/40 transition-all duration-500"
-              >
-                
-                <div className="flex-1 flex items-center gap-12">
-                  <div className="font-display text-5xl text-accent/20 group-hover:text-accent transition-colors tabular-nums">
-                    {chan.n}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="mono text-[11px] font-bold tracking-[0.2em] uppercase text-accent border border-accent/20 px-2 py-0.5">{chan.tag}</span>
-                      <Icon className="h-4 w-4 text-muted-foreground/40 group-hover:text-accent transition-colors" />
+                <Link
+                  key={chan.n}
+                  to={chan.to}
+                  className="group relative bg-background p-12 flex items-center justify-between overflow-hidden hover:bg-secondary/40 transition-all duration-500"
+                >
+
+                  <div className="flex-1 flex items-center gap-12">
+                    <div className="font-display text-5xl text-accent/20 group-hover:text-accent transition-colors tabular-nums">
+                      {chan.n}
                     </div>
-                    <h3 className="font-display text-4xl mb-3 text-foreground group-hover:text-primary transition-colors">{chan.t}</h3>
-                    <p className="text-muted-foreground text-base leading-relaxed max-w-md font-light group-hover:text-foreground/70 transition-colors">{chan.d}</p>
+                    <div>
+                      <div className="flex items-center gap-4 mb-3">
+                        <span className="mono text-[11px] font-bold tracking-[0.2em] uppercase text-accent border border-accent/20 px-2 py-0.5">{chan.tag}</span>
+                        <Icon className="h-4 w-4 text-muted-foreground/40 group-hover:text-accent transition-colors" />
+                      </div>
+                      <h3 className="font-display text-4xl mb-3 text-foreground group-hover:text-primary transition-colors">{chan.t}</h3>
+                      <p className="text-muted-foreground text-base leading-relaxed max-w-md font-light group-hover:text-foreground/70 transition-colors">{chan.d}</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="h-14 w-14 border border-border rounded-full flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-500 shrink-0 ml-8">
-                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-                </div>
-              </Link>
-            )})}
+
+                  <div className="h-14 w-14 border border-border rounded-full flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-500 shrink-0 ml-8">
+                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -228,7 +229,7 @@ function LatestNews() {
           </div>
           <div className="flex justify-end">
             <a href="#" className="group flex items-center gap-4 mono text-[11px] font-bold tracking-[0.3em] uppercase text-accent border-b-2 border-accent pb-2 hover:opacity-70 transition-all">
-              VIEW ARCHIVE FULL 
+              VIEW ARCHIVE FULL
               <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
             </a>
           </div>
@@ -251,7 +252,7 @@ function LatestNews() {
                 "A milestone document defining the next decade of our digital and industrial presence."
               </p>
               <a href="#" className="group/btn flex items-center gap-6 mono text-[11px] font-bold tracking-[0.3em] uppercase text-accent">
-                READ THE FULL REPORT 
+                READ THE FULL REPORT
                 <div className="h-12 w-12 border border-accent/30 rounded-full flex items-center justify-center group-hover/btn:bg-accent group-hover/btn:text-primary transition-all">
                   <ArrowRight className="h-5 w-5" />
                 </div>
@@ -272,23 +273,23 @@ function LatestNews() {
               className="group grid grid-cols-12 gap-8 p-10 items-center hover:bg-secondary/20 transition-all duration-300 relative overflow-hidden"
             >
               {/* Hover Accent Rule */}
-              
+
               <div className="col-span-1 hidden lg:block">
                 <span className="font-display text-3xl text-accent/20 group-hover:text-accent transition-colors tabular-nums">
                   {String(i + 2).padStart(2, "0")}
                 </span>
               </div>
-              
+
               <div className="col-span-12 lg:col-span-2">
                 <span className="mono text-[11px] tracking-widest text-muted-foreground/60 tabular-nums uppercase">{item.date}</span>
               </div>
-              
+
               <div className="col-span-12 lg:col-span-7">
                 <h4 className="font-display text-2xl lg:text-3xl text-foreground group-hover:text-accent transition-colors leading-snug">
                   {item.title}
                 </h4>
               </div>
-              
+
               <div className="col-span-12 lg:col-span-2 lg:text-right">
                 <span className="mono text-[11px] font-bold tracking-[0.2em] uppercase text-accent border border-accent/20 px-3 py-1 group-hover:bg-accent group-hover:text-white transition-all">
                   {item.cat}

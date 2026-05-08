@@ -51,8 +51,8 @@ export default function MediaDetail() {
       {data.testimonials && <Testimonials data={data} />}
 
       {/* Slug-specific extra sections */}
-      {slug === "news"      && <NewsExtras />}
-      {slug === "magazine"  && <MagazineExtras />}
+      {slug === "news" && <NewsExtras />}
+      {slug === "magazine" && <MagazineExtras />}
       {slug === "portfolio" && <PortfolioExtras />}
       {slug === "catalogue" && <CatalogueExtras />}
 
@@ -63,8 +63,8 @@ export default function MediaDetail() {
 
 /* ─── accent map ─────────────────────────────────────────────── */
 const ACCENT: Record<string, string> = {
-  news:      "#1a56db",
-  magazine:  "#1a56db",
+  news: "#1a56db",
+  magazine: "#1a56db",
   portfolio: "#1a56db",
   catalogue: "#1a56db",
 };
@@ -76,8 +76,8 @@ const accent = (slug: string) => ACCENT[slug] ?? "#1a56db";
 function MediaHero({ data, slug }: { data: any; slug: string }) {
   const ac = accent(slug);
   const iconMap: Record<string, any> = {
-    news:      Newspaper,
-    magazine:  BookOpen,
+    news: Newspaper,
+    magazine: BookOpen,
     portfolio: LayoutGrid,
     catalogue: Tag,
   };
@@ -91,10 +91,10 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
     <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gray-950 text-white">
       {/* Background Image with Cinematic Overlays */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={data.hero.image} 
-          alt="" 
-          className="w-full h-full object-cover grayscale opacity-40 scale-110 animate-slow-zoom" 
+        <img
+          src={data.hero.image}
+          alt=""
+          className="w-full h-full object-cover grayscale opacity-40 scale-110 animate-slow-zoom"
         />
         <div className="absolute inset-0 bg-linear-to-r from-gray-950 via-gray-950/80 to-transparent z-10" />
         <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-transparent to-gray-950/40 z-10" />
@@ -106,14 +106,14 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* Title Block */}
           <div className="lg:col-span-7">
-            <h1 
+            <h1
               className="font-display leading-[0.95] tracking-tighter mb-8"
               style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
             >
               {rest} <br />
               <span className="italic text-gray-400">{accent_word}</span>
             </h1>
-            
+
             <p className="text-xl lg:text-2xl text-gray-400 font-light leading-relaxed max-w-xl mb-12">
               {data.hero.subtitle ?? data.hero.description}
             </p>
@@ -138,43 +138,43 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
           {/* Right Side: Clean Geometric Mosaic */}
           <div className="lg:col-span-5 hidden lg:block">
             <div className="relative h-full flex items-center justify-center">
-              
+
               {/* Background Geometric Accent */}
               <div className="absolute inset-0 bg-blueprint opacity-[0.03] pointer-events-none" />
 
               <div className="grid grid-cols-12 gap-4 w-full h-[600px]">
-                
+
                 {/* 01. Large Vertical Panel (Left) */}
                 <div className="col-span-7 h-full rounded-2xl overflow-hidden border border-white/10 group">
-                   <img 
-                      src={data.hero.image} 
-                      alt="" 
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
-                   />
-                   {/* Scanline Overlay */}
-                   <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-10" />
+                  <img
+                    src={data.hero.image}
+                    alt=""
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                  />
+                  {/* Scanline Overlay */}
+                  <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-10" />
                 </div>
 
                 {/* 02. Top Right Panel */}
                 <div className="col-span-5 flex flex-col gap-4">
-                   <div className="flex-1 rounded-2xl overflow-hidden border border-white/10 group">
-                      <img 
-                         src={data.intro?.image || data.hero.image} 
-                         alt="" 
-                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
-                      />
-                      <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                   </div>
+                  <div className="flex-1 rounded-2xl overflow-hidden border border-white/10 group">
+                    <img
+                      src={data.intro?.image || data.hero.image}
+                      alt=""
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
 
-                   {/* 03. Bottom Right Panel */}
-                   <div className="h-[40%] rounded-2xl overflow-hidden border border-white/10 group">
-                      <img 
-                         src={data.featuredVideo?.thumbnail || data.hero.image} 
-                         alt="" 
-                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-gray-950/40 to-transparent" />
-                   </div>
+                  {/* 03. Bottom Right Panel */}
+                  <div className="h-[40%] rounded-2xl overflow-hidden border border-white/10 group">
+                    <img
+                      src={data.featuredVideo?.thumbnail || data.hero.image}
+                      alt=""
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-gray-950/40 to-transparent" />
+                  </div>
                 </div>
 
               </div>
@@ -182,7 +182,7 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
               {/* Decorative Corner Accents (Geometric Only) */}
               <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
               <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white/20" />
-              
+
             </div>
           </div>
         </div>
@@ -201,7 +201,7 @@ function MediaHero({ data, slug }: { data: any; slug: string }) {
 ═══════════════════════════════════════════════════════════════ */
 function IntroSection({ data }: any) {
   return (
-    <section id="overview" className="relative py-32 lg:py-48 bg-white overflow-hidden">
+    <section id="overview" className="relative py-20 lg:py-28 bg-white">
       {/* Background Technical Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
@@ -213,7 +213,7 @@ function IntroSection({ data }: any) {
       <div className="container mx-auto px-8 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           {/* LEFT: Cinematic Visuals & Stats */}
-          <div className="lg:col-span-6 space-y-12">
+          <div className="lg:col-span-5 space-y-12 md:sticky md:top-32 self-start">
             <div className="relative">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-gray-100 shadow-2xl group">
                 <img
@@ -222,7 +222,7 @@ function IntroSection({ data }: any) {
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-transparent to-transparent opacity-60" />
-                
+
                 {/* Floating HUD Element */}
                 <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-xl max-w-[240px] animate-float">
                   <div className="flex items-center gap-3 mb-4">
@@ -252,7 +252,7 @@ function IntroSection({ data }: any) {
           </div>
 
           {/* RIGHT: High-Impact Typography & Points */}
-          <div className="lg:col-span-6 pt-10 lg:pt-0">
+          <div className="lg:col-span-7 pt-10 lg:pt-0">
             <div className="inline-flex items-center gap-3 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full mb-8">
               <span className="w-1 h-1 rounded-full bg-blue-600" />
               <span className="mono text-[10px] font-bold tracking-[0.2em] uppercase text-blue-700">01 — Architecture</span>
@@ -272,7 +272,7 @@ function IntroSection({ data }: any) {
                         {String(i + 1).padStart(2, "0")}
                       </div>
                       <div className="absolute top-0 left-0 w-8 h-8 flex items-center justify-center">
-                         <div className="w-1 h-1 rounded-full bg-blue-600 group-hover:scale-[3] transition-transform" />
+                        <div className="w-1 h-1 rounded-full bg-blue-600 group-hover:scale-[3] transition-transform" />
                       </div>
                     </div>
                     <div>
@@ -287,12 +287,12 @@ function IntroSection({ data }: any) {
 
             {/* Bottom Row Stats (Mobile/Fallback) */}
             <div className="lg:hidden grid grid-cols-2 gap-6 mt-16 pt-10 border-t border-gray-100">
-               {data.stats?.map((s: any) => (
-                  <div key={s.label}>
-                    <div className="text-2xl font-display text-gray-900 mb-1">{s.value}</div>
-                    <div className="text-[10px] font-bold tracking-widest uppercase text-blue-600">{s.label}</div>
-                  </div>
-                ))}
+              {data.stats?.map((s: any) => (
+                <div key={s.label}>
+                  <div className="text-2xl font-display text-gray-900 mb-1">{s.value}</div>
+                  <div className="text-[10px] font-bold tracking-widest uppercase text-blue-600">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -469,13 +469,13 @@ function InsightPanel({ data }: any) {
     <section className="py-32 lg:py-48 bg-white overflow-hidden relative">
       {/* Background Subtle Texture */}
       <div className="absolute inset-0 bg-dots opacity-[0.05] pointer-events-none" />
-      
+
       <div className="container mx-auto px-8 lg:px-12 relative z-10">
         <div className="mb-20 max-w-3xl">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px w-12 bg-blue-600" />
             <span className="mono text-[10px] font-bold tracking-[0.4em] text-blue-600 uppercase">
-               Strategic_Intelligence // v4.2
+              Strategic_Intelligence // v4.2
             </span>
           </div>
           <h2 className="font-display text-6xl lg:text-8xl leading-[0.85] tracking-tighter text-gray-900 mb-10">
@@ -483,63 +483,63 @@ function InsightPanel({ data }: any) {
             <span className="italic text-gray-300">Takeaways.</span>
           </h2>
           <p className="text-gray-500 text-xl font-light leading-relaxed border-l-2 border-blue-600/20 pl-8">
-             Distilling high-frequency industrial dispatches into foundational strategic pillars for the sector's next evolutionary phase.
+            Distilling high-frequency industrial dispatches into foundational strategic pillars for the sector's next evolutionary phase.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {points.slice(0, 6).map((p: string, i: number) => {
-             // Rotate through available images in data
-             const images = [data.hero.image, data.intro.image, data.featuredVideo?.thumbnail || data.hero.image];
-             const img = images[i % images.length];
-             
-             return (
-               <div
-                 key={i}
-                 className="group relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
-               >
-                 {/* Cinematic Image Background */}
-                 <img
-                   src={img}
-                   alt=""
-                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                 />
-                 
-                 {/* Sophisticated Overlays */}
-                 <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                 
-                 {/* Content Layer */}
-                 <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
-                    <div className="flex justify-between items-start">
-                       <div className="mono text-[10px] text-white/40 tracking-[0.3em] uppercase">Node_0{i+1}</div>
-                       <div className="h-10 w-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                          <ArrowRight className="h-4 w-4 text-white" />
-                       </div>
-                    </div>
+            // Rotate through available images in data
+            const images = [data.hero.image, data.intro.image, data.featuredVideo?.thumbnail || data.hero.image];
+            const img = images[i % images.length];
 
-                    <div className="space-y-6">
-                       <div className="h-px w-12 bg-blue-500 group-hover:w-full transition-all duration-700" />
-                       <h3 className="font-display text-2xl lg:text-3xl text-white leading-tight tracking-tight">
-                          {p}
-                       </h3>
-                    </div>
-                 </div>
+            return (
+              <div
+                key={i}
+                className="group relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
+              >
+                {/* Cinematic Image Background */}
+                <img
+                  src={img}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                />
 
-                 {/* Technical Scanline (Subtle) */}
-                 <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:100%_8px] z-10 opacity-20" />
-               </div>
-             );
+                {/* Sophisticated Overlays */}
+                <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                {/* Content Layer */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
+                  <div className="flex justify-between items-start">
+                    <div className="mono text-[10px] text-white/40 tracking-[0.3em] uppercase">Node_0{i + 1}</div>
+                    <div className="h-10 w-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                      <ArrowRight className="h-4 w-4 text-white" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="h-px w-12 bg-blue-500 group-hover:w-full transition-all duration-700" />
+                    <h3 className="font-display text-2xl lg:text-3xl text-white leading-tight tracking-tight">
+                      {p}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Technical Scanline (Subtle) */}
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:100%_8px] z-10 opacity-20" />
+              </div>
+            );
           })}
         </div>
 
         {/* Bottom Decorative Edge */}
         <div className="mt-32 flex items-center justify-between border-t border-gray-100 pt-12">
-           <div className="mono text-[9px] text-gray-300 tracking-[0.5em] uppercase">End_Of_Dispatch</div>
-           <div className="flex gap-1">
-              {[1, 2, 3, 4, 5].map(dot => (
-                <div key={dot} className="w-1 h-1 bg-blue-600/20 rounded-full" />
-              ))}
-           </div>
+          <div className="mono text-[9px] text-gray-300 tracking-[0.5em] uppercase">End_Of_Dispatch</div>
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map(dot => (
+              <div key={dot} className="w-1 h-1 bg-blue-600/20 rounded-full" />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -665,10 +665,10 @@ function NewsExtras() {
                     </h3>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-6 mt-6 lg:mt-0 lg:ml-12 border-t lg:border-t-0 pt-4 lg:pt-0 border-gray-100">
                   <div className="flex items-center gap-2 text-xs text-gray-400">
-                    <Eye className="h-3.5 w-3.5 text-gray-300" /> 
+                    <Eye className="h-3.5 w-3.5 text-gray-300" />
                     <span className="font-bold"><AnimatedStat value={item.views} /></span>
                     <span className="opacity-50">reads</span>
                   </div>
@@ -796,7 +796,7 @@ function MagazineExtras() {
       <section className="py-24 bg-blue-50 border-b border-blue-100">
         <div className="container mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="md:sticky md:top-32 self-start">
               <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-4">Contributors</div>
               <h2 className="font-serif text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight">
                 Expert <span className="italic text-gray-400">Editorial Board</span>
@@ -831,7 +831,7 @@ function MagazineExtras() {
       </section>
 
       {/* Magazine Statistics / Reach */}
-      <section className="py-24 bg-white border-b border-gray-100 overflow-hidden">
+      <section className="py-24 bg-white border-b border-gray-100">
         <div className="container mx-auto px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="lg:w-1/2">
@@ -858,36 +858,36 @@ function MagazineExtras() {
               </div>
             </div>
             <div className="lg:w-5/12">
-               <div className="bg-gray-50 border border-gray-100 p-10 rounded-2xl relative overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4">
-                   <div className="h-2 w-2 bg-blue-600 rounded-full animate-pulse" />
-                 </div>
-                 <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-8 border-b border-blue-100 pb-4">
-                   Circulation Manifest
-                 </div>
-                 <div className="space-y-6">
-                   {[
-                     { area: "Public Policy & Infrastructure", share: "35%", icon: <Globe className="h-4 w-4" /> },
-                     { area: "Industrial Manufacturing", share: "28%", icon: <Settings className="h-4 w-4" /> },
-                     { area: "Corporate Boardrooms", share: "22%", icon: <Building className="h-4 w-4" /> },
-                     { area: "Academic Institutions", share: "15%", icon: <BookOpen className="h-4 w-4" /> }
-                   ].map((item, i) => (
-                     <div key={i} className="flex items-center justify-between group">
-                       <div className="flex items-center gap-4">
-                         <div className="text-blue-600 opacity-40 group-hover:opacity-100 transition-opacity">
-                           {item.icon}
-                         </div>
-                         <div className="text-sm font-medium text-gray-700">{item.area}</div>
-                       </div>
-                       <div className="text-sm font-bold text-blue-600 mono">{item.share}</div>
-                     </div>
-                   ))}
-                 </div>
-                 <div className="mt-10 pt-8 border-t border-blue-100 flex items-center justify-between text-[10px] text-gray-400 font-bold tracking-widest uppercase">
-                    <span>Active Distribution</span>
-                    <span className="text-blue-600">Verified Audit 2025</span>
-                 </div>
-               </div>
+              <div className="bg-gray-50 border border-gray-100 p-10 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4">
+                  <div className="h-2 w-2 bg-blue-600 rounded-full animate-pulse" />
+                </div>
+                <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-8 border-b border-blue-100 pb-4">
+                  Circulation Manifest
+                </div>
+                <div className="space-y-6">
+                  {[
+                    { area: "Public Policy & Infrastructure", share: "35%", icon: <Globe className="h-4 w-4" /> },
+                    { area: "Industrial Manufacturing", share: "28%", icon: <Settings className="h-4 w-4" /> },
+                    { area: "Corporate Boardrooms", share: "22%", icon: <Building className="h-4 w-4" /> },
+                    { area: "Academic Institutions", share: "15%", icon: <BookOpen className="h-4 w-4" /> }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between group">
+                      <div className="flex items-center gap-4">
+                        <div className="text-blue-600 opacity-40 group-hover:opacity-100 transition-opacity">
+                          {item.icon}
+                        </div>
+                        <div className="text-sm font-medium text-gray-700">{item.area}</div>
+                      </div>
+                      <div className="text-sm font-bold text-blue-600 mono">{item.share}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-10 pt-8 border-t border-blue-100 flex items-center justify-between text-[10px] text-gray-400 font-bold tracking-widest uppercase">
+                  <span>Active Distribution</span>
+                  <span className="text-blue-600">Verified Audit 2025</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -951,7 +951,7 @@ function PortfolioExtras() {
       <section className="py-24 bg-white border-b border-gray-100">
         <div className="container mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="lg:sticky lg:top-32">
+            <div className="md:sticky md:top-32 self-start">
               <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-6">Execution Evolution</div>
               <h2 className="font-serif text-4xl lg:text-5xl text-gray-900 mb-8 leading-tight">
                 Strategic <br />
@@ -961,30 +961,30 @@ function PortfolioExtras() {
                 Tracking the industrial trajectory of the Jigisha Group—from foundational regional contracts to a pan-India infrastructure ecosystem.
               </p>
               <div className="inline-flex items-center gap-3 px-5 py-2 bg-blue-50 text-blue-700 text-[10px] font-bold tracking-[0.2em] uppercase rounded-lg">
-                 <div className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
-                 Verified Corporate Record
+                <div className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
+                Verified Corporate Record
               </div>
             </div>
 
             <div className="relative">
-               {/* Vertical Connector Line */}
-               <div className="absolute left-4 top-4 bottom-4 w-px bg-gray-100" />
-               
-               <div className="space-y-12 relative z-10">
-                 {milestones.map((m, i) => (
-                   <div key={i} className="group pl-12 relative">
-                      {/* Technical Bullet */}
-                      <div className="absolute left-0 top-1.5 h-8 w-8 -translate-x-[15px] bg-white border border-gray-200 rounded-lg flex items-center justify-center group-hover:border-blue-600 group-hover:shadow-lg transition-all duration-300">
-                         <div className="h-2 w-2 rounded-full bg-gray-300 group-hover:bg-blue-600 transition-colors" />
-                      </div>
+              {/* Vertical Connector Line */}
+              <div className="absolute left-4 top-4 bottom-4 w-px bg-gray-100" />
 
-                      <div className="flex flex-col gap-1">
-                         <span className="mono text-[11px] font-bold text-blue-600 tracking-widest">{m.year}</span>
-                         <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{m.event}</h3>
-                      </div>
-                   </div>
-                 ))}
-               </div>
+              <div className="space-y-12 relative z-10">
+                {milestones.map((m, i) => (
+                  <div key={i} className="group pl-12 relative">
+                    {/* Technical Bullet */}
+                    <div className="absolute left-0 top-1.5 h-8 w-8 -translate-x-[15px] bg-white border border-gray-200 rounded-lg flex items-center justify-center group-hover:border-blue-600 group-hover:shadow-lg transition-all duration-300">
+                      <div className="h-2 w-2 rounded-full bg-gray-300 group-hover:bg-blue-600 transition-colors" />
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <span className="mono text-[11px] font-bold text-blue-600 tracking-widest">{m.year}</span>
+                      <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{m.event}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1121,7 +1121,7 @@ function CatalogueExtras() {
       <section className="py-24 bg-white border-b border-gray-100">
         <div className="container mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="md:sticky md:top-32 self-start">
               <div className="text-xs font-bold tracking-widest uppercase text-blue-600 mb-4">Standards</div>
               <h2 className="font-serif text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
                 All Items <span className="italic text-gray-400">Spec-Verified</span>
@@ -1165,5 +1165,5 @@ function CatalogueExtras() {
 
 /* missing import used inside catalogue extras */
 function Settings(props: any) {
-  return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>;
+  return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14" /><path d="M4.93 4.93a10 10 0 0 0 0 14.14" /></svg>;
 }
